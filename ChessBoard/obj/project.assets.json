@@ -1,63 +1,11 @@
 {
   "version": 3,
   "targets": {
-    "net5.0-windows7.0": {
-      "System.Speech/8.0.0-preview.3.23174.8": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/System.Speech.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Speech.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/netcoreapp2.0/System.Speech.targets": {}
-        }
-      }
-    }
+    "net5.0-windows7.0": {}
   },
-  "libraries": {
-    "System.Speech/8.0.0-preview.3.23174.8": {
-      "sha512": "2jRr0Oig3W3iyuDE/4Jq9SfyfX0/SrfZp+6RnIhgyr0VtRL7AwP573rzTTderoUK7rLBPa9SSP6/myxWfkWUng==",
-      "type": "package",
-      "path": "system.speech/8.0.0-preview.3.23174.8",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "buildTransitive/net6.0/_._",
-        "buildTransitive/netcoreapp2.0/System.Speech.targets",
-        "lib/net462/_._",
-        "lib/net6.0/System.Speech.dll",
-        "lib/net6.0/System.Speech.xml",
-        "lib/net7.0/System.Speech.dll",
-        "lib/net7.0/System.Speech.xml",
-        "lib/net8.0/System.Speech.dll",
-        "lib/net8.0/System.Speech.xml",
-        "lib/netstandard2.0/System.Speech.dll",
-        "lib/netstandard2.0/System.Speech.xml",
-        "runtimes/win/lib/net6.0/System.Speech.dll",
-        "runtimes/win/lib/net6.0/System.Speech.xml",
-        "runtimes/win/lib/net7.0/System.Speech.dll",
-        "runtimes/win/lib/net7.0/System.Speech.xml",
-        "runtimes/win/lib/net8.0/System.Speech.dll",
-        "runtimes/win/lib/net8.0/System.Speech.xml",
-        "system.speech.8.0.0-preview.3.23174.8.nupkg.sha512",
-        "system.speech.nuspec",
-        "useSharedDesignerContext.txt"
-      ]
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    "net5.0-windows7.0": [
-      "System.Speech >= 8.0.0-preview.3.23174.8"
-    ]
+    "net5.0-windows7.0": []
   },
   "packageFolders": {
     "C:\\Users\\AzatYTebiLove\\.nuget\\packages\\": {},
@@ -103,12 +51,6 @@
     "frameworks": {
       "net5.0-windows7.0": {
         "targetAlias": "net5.0-windows",
-        "dependencies": {
-          "System.Speech": {
-            "target": "Package",
-            "version": "[8.0.0-preview.3.23174.8, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",

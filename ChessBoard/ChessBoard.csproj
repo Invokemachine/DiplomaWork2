@@ -25,10 +25,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Speech" Version="8.0.0-preview.3.23174.8" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>

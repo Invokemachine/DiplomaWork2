@@ -34,8 +34,6 @@ C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Hi
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\RulesWindow.baml
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\LanguageSettingsWindow.g.cs
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\LanguageSettingsWindow.baml
-C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\bin\Debug\net5.0-windows\System.Speech.dll
-C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\ChessBoard.csproj.CopyComplete
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Interop.SpeechLib.dll
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\ChessBoard.csproj.ResolveComReference.cache
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\AboutCreator.g.cs

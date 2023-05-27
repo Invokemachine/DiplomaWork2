@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "XFddflLQrKsxgPqxxRlYCyH+BnFnDPQ67xB8WNzlBsGi0G3PuypHXWiqUzD01nvBt+lwD+mHe/UXQVvm2/R2/g==",
+  "dgSpecHash": "BfRxHGeqztjf/Kr86NtBENVD6/oZJ0qUggy431nazbP6MszCqbJVPs5UZ7e45aGVuVef9u3NJjSVK/3Yf9v6Rw==",
   "success": true,
   "projectFilePath": "C:\\Users\\AzatYTebiLove\\Desktop\\ChessBoard\\ChessBoard\\ChessBoard.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\AzatYTebiLove\\.nuget\\packages\\system.speech\\8.0.0-preview.3.23174.8\\system.speech.8.0.0-preview.3.23174.8.nupkg.sha512",
     "C:\\Users\\AzatYTebiLove\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
     "C:\\Users\\AzatYTebiLove\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
     "C:\\Users\\AzatYTebiLove\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
