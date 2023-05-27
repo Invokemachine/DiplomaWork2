@@ -22,12 +22,16 @@ namespace ChessBoard
         private ICommand _newGameCommand;
         private ICommand _clearCommand;
         private ICommand _cellCommand;
-
+        private ICommand _puzzlenext;
+        private ICommand _puzzleprevious;
+        private ICommand _puzzlecheck;
+        int CurrentPuzzleNumber = 1;
+        string CurrentPuzzleName = "";
 
         public static IEnumerable<char> Numbers => "87654321";
         public static IEnumerable<char> Letters => "ABCDEFGH";
 
-        public int CurrentPlayer = 1;
+        public int CurrentPlayer = 0;
         public bool IsItWhitesPiece;
         public bool IsWhitesKingInCheck = false;
         public bool IsBlacksKingInCheck = false;
@@ -42,6 +46,132 @@ namespace ChessBoard
                 OnPropertyChanged();
             }
         }
+        public ICommand PuzzlePCheck => _puzzlecheck ??= new RelayCommand(parameter =>
+        {
+            if (CurrentPuzzleName == "PuzzleBeginner1")
+            {
+                if (Board._area[0, 0].State == State.WhiteKing && Board._area[1, 2].State == State.BlackKing && Board._area[0, 3].State == State.BlackRook)
+                {
+                    MessageBox.Show("Верно!");
+                }
+                else
+                    MessageBox.Show("Неверно!");
+            }
+            if (CurrentPuzzleName == "PuzzleBeginner2")
+            {
+                if (Board._area[0,5].State == State.WhiteKing && Board._area[1,1].State == State.WhiteRook && Board._area[0,7].State == State.BlackKing && Board._area[2,6].State == State.WhiteKnight)
+                {
+                    MessageBox.Show("Верно!");
+                }
+                else
+                    MessageBox.Show("Неверно!");
+            }
+            if (CurrentPuzzleName == "PuzzleBeginner3")
+            {
+                if (Board._area[6,1].State == State.WhiteBishop && Board._area[4,3].State == State.BlackKing && Board._area[0,7].State == State.BlackQueen)
+                {
+                    MessageBox.Show("Верно!");
+                }
+                else
+                    MessageBox.Show("Неверно!");
+            }
+        });
+        public ICommand PuzzlePrevious => _puzzleprevious ??= new RelayCommand(parameter =>
+        {
+            if (CurrentPuzzleNumber == 0)
+                CurrentPuzzleNumber = 3;
+            else if(CurrentPuzzleNumber == 1)
+            {
+                CurrentPlayer = 1;
+                CurrentPuzzleName = "PuzzleBeginner3";
+                Board board = new();
+                board[0, 7] = State.BlackQueen;
+                board[7, 5] = State.WhiteKing;
+                board[7, 4] = State.WhiteQueen;
+                board[7, 3] = State.WhiteRook;
+                board[7, 2] = State.WhiteBishop;
+                board[5, 3] = State.BlackPawn;
+                board[4, 3] = State.BlackKing;
+                Board = board;
+                CurrentPuzzleNumber = 3;
+            }
+            else if (CurrentPuzzleNumber == 2)
+            {
+                CurrentPuzzleName = "PuzzleBeginner1";
+                CurrentPlayer = 2;
+                Board board = new();
+                board[0, 0] = State.WhiteKing;
+                board[1, 0] = State.WhitePawn;
+                board[2, 0] = State.WhitePawn;
+                board[5, 3] = State.WhiteKnight;
+                board[1, 2] = State.BlackKing;
+                board[1, 3] = State.BlackRook;
+                Board = board;
+                CurrentPuzzleNumber--;
+            }
+            else if(CurrentPuzzleNumber == 3)
+            {
+                CurrentPlayer = 1;
+                CurrentPuzzleName = "PuzzleBeginner2";
+                Board board = new();
+                board[1, 1] = State.WhiteRook;
+                board[0, 5] = State.WhiteKing;
+                board[0, 7] = State.BlackKing;
+                board[7, 2] = State.BlackQueen;
+                board[3, 4] = State.WhiteKnight;
+                board[4, 4] = State.BlackPawn;
+                Board = board;
+                CurrentPuzzleNumber--;
+            }
+        });
+        public ICommand PuzzleNext => _puzzlenext ??= new RelayCommand(parameter =>
+        {
+            if (CurrentPuzzleNumber == 0)
+                CurrentPuzzleNumber = 1;
+            else if (CurrentPuzzleNumber == 1)
+            {
+                CurrentPuzzleName = "PuzzleBeginner1";
+                CurrentPlayer = 2;
+                Board board = new();
+                board[0, 0] = State.WhiteKing;
+                board[1, 0] = State.WhitePawn;
+                board[2, 0] = State.WhitePawn;
+                board[5, 3] = State.WhiteKnight;
+                board[1, 2] = State.BlackKing;
+                board[1, 3] = State.BlackRook;
+                Board = board;
+                CurrentPuzzleNumber++;
+            }
+            else if(CurrentPuzzleNumber == 2)
+            {
+                CurrentPuzzleName = "PuzzleBeginner2";
+                CurrentPlayer = 1;
+                Board board = new();
+                board[1, 1] = State.WhiteRook;
+                board[0, 5] = State.WhiteKing;
+                board[0, 7] = State.BlackKing;
+                board[7, 2] = State.BlackQueen;
+                board[3, 4] = State.WhiteKnight;
+                board[4, 4] = State.BlackPawn;
+                Board = board;
+                CurrentPuzzleNumber++;
+            }
+            else if(CurrentPuzzleNumber == 3)
+            {
+                CurrentPuzzleName = "PuzzleBeginner3";
+                CurrentPlayer = 1;
+                Board board = new();
+                board[0, 7] = State.BlackQueen;
+                board[7, 5] = State.WhiteKing;
+                board[7, 4] = State.WhiteQueen;
+                board[7, 3] = State.WhiteRook;
+                board[7, 2] = State.WhiteBishop;
+                board[5, 3] = State.BlackPawn;
+                board[4, 3] = State.BlackKing;
+                Board = board;
+                CurrentPuzzleNumber = 1;
+            }
+        });
 
         public ICommand NewGameCommand => _newGameCommand ??= new RelayCommand(parameter =>
         {
@@ -118,7 +248,7 @@ namespace ChessBoard
                             activeCell.Active = false;
                             cell.State = activeCell.State;
                             activeCell.State = State.Empty;
-                            DeleteOccupiedSquares(cell.RowNumber, cell.ColumnNumber);
+                            DeleteOccupiedSquares(cell, cell.RowNumber, cell.ColumnNumber);
                             DeleteMarks(cell.RowNumber, cell.ColumnNumber);
                             SwitchPlayer();
                         }
@@ -130,7 +260,7 @@ namespace ChessBoard
                             activeCell.Active = false;
                             cell.State = activeCell.State;
                             activeCell.State = State.Empty;
-                            DeleteOccupiedSquares(cell.RowNumber, cell.ColumnNumber);
+                            DeleteOccupiedSquares(cell, cell.RowNumber, cell.ColumnNumber);
                             DeleteMarks(cell.RowNumber, cell.ColumnNumber);
                             SwitchPlayer();
                         }
@@ -176,7 +306,7 @@ namespace ChessBoard
             board[7, 2] = State.WhiteBishop;
             board[7, 3] = State.WhiteQueen;
             board[7, 4] = State.WhiteKing;
-            board[3, 3] = State.WhiteBishop;
+            board[7, 5] = State.WhiteBishop;
             board[7, 6] = State.WhiteKnight;
             board[7, 7] = State.WhiteRook;
             Board = board;
@@ -465,11 +595,11 @@ namespace ChessBoard
                                         Board._area[cell.RowNumber - 2, cell.ColumnNumber].PossibleMove = true;
                                         if (InsideBorder(cell.RowNumber - 2, cell.ColumnNumber - 1))
                                         {
-                                            Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].PossibleMove = true;
+                                            Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].IsOccupiedByWhite = true;
                                         }
                                         if (InsideBorder(cell.RowNumber - 2, cell.ColumnNumber + 1))
                                         {
-                                            Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].PossibleMove = true;
+                                            Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].IsOccupiedByWhite = true;
                                         }
                                     }
                                     if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber + 1))
@@ -1163,7 +1293,7 @@ namespace ChessBoard
                             break;
 
                         case State.BlackKnight:
-                            if(IsBlacksKingInCheck == false)
+                            if (IsBlacksKingInCheck == false)
                             {
                                 if (cell != null)
                                 {
@@ -1266,7 +1396,7 @@ namespace ChessBoard
                             }
                             break;
                         case State.BlackRook:
-                            if(IsBlacksKingInCheck == false)
+                            if (IsBlacksKingInCheck == false)
                             {
                                 if (InsideBorder(cell.RowNumber, cell.ColumnNumber) == true)
                                 {
@@ -1528,15 +1658,91 @@ namespace ChessBoard
                 }
             }
         }
-        public void DeleteOccupiedSquares(int i, int j)
+        public void DeleteOccupiedSquares(Cell cell, int i, int j)
         {
-            for (i = 0; i < 8; i++)
+            if (cell.State == State.WhiteKnight || cell.State == State.BlackKnight)
             {
-                for (j = 0; j < 8; j++)
+                if (InsideBorder(cell.RowNumber + 2, cell.ColumnNumber + 1) == true)
                 {
-                    Board._area[i, j].IsOccupiedByWhite = false;
-                    Board._area[i, j].IsOccupiedByBlack = false;
+                    MessageBox.Show("Ура я сюда зашёл");
+                    if (CurrentPlayer == 1)
+                        Board._area[cell.RowNumber + 2, cell.ColumnNumber + 1].IsOccupiedByWhite = false;
+                    else if (CurrentPlayer == 2)
+                        Board._area[cell.RowNumber + 2, cell.ColumnNumber + 1].IsOccupiedByBlack = false;
                 }
+
+                if (InsideBorder(cell.RowNumber + 2, cell.ColumnNumber - 1) == true)
+                {
+                    MessageBox.Show("Ура я сюда зашёл");
+                    if (CurrentPlayer == 1)
+                        Board._area[cell.RowNumber + 2, cell.ColumnNumber + 1].IsOccupiedByWhite = false;
+                    else if (CurrentPlayer == 2)
+                        Board._area[cell.RowNumber + 2, cell.ColumnNumber - 1].IsOccupiedByBlack = false;
+                }
+
+                if (InsideBorder(cell.RowNumber - 2, cell.ColumnNumber - 1) == true)
+                {
+                    MessageBox.Show("Ура я сюда зашёл");
+                    if (CurrentPlayer == 1)
+                        Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].IsOccupiedByWhite = false;
+                    else if (CurrentPlayer == 2)
+                        Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].IsOccupiedByBlack = false;
+                }
+
+                if (InsideBorder(cell.RowNumber - 2, cell.ColumnNumber + 1) == true)
+                {
+                    MessageBox.Show("Ура я сюда зашёл");
+                    if (CurrentPlayer == 1)
+                        Board._area[cell.RowNumber - 2, cell.ColumnNumber + 1].IsOccupiedByWhite = false;
+                    else if (CurrentPlayer == 2)
+                        Board._area[cell.RowNumber - 2, cell.ColumnNumber + 1].IsOccupiedByBlack = false;
+                }
+
+                if (InsideBorder(cell.RowNumber + 1, cell.ColumnNumber + 2) == true)
+                {
+                    MessageBox.Show("Ура я сюда зашёл");
+                    if (CurrentPlayer == 1)
+                        Board._area[cell.RowNumber + 1, cell.ColumnNumber + 2].IsOccupiedByWhite = false;
+                    else if (CurrentPlayer == 2)
+                        Board._area[cell.RowNumber + 1, cell.ColumnNumber + 2].IsOccupiedByBlack = false;
+                }
+
+                if (InsideBorder(cell.RowNumber + 1, cell.ColumnNumber - 2) == true)
+                {
+                    MessageBox.Show("Ура я сюда зашёл");
+                    if (CurrentPlayer == 1)
+                        Board._area[cell.RowNumber + 1, cell.ColumnNumber - 2].IsOccupiedByWhite = false;
+                    else if (CurrentPlayer == 2)
+                        Board._area[cell.RowNumber + 1, cell.ColumnNumber - 2].IsOccupiedByBlack = false;
+                }
+
+                if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber - 2) == true)
+                {
+                    MessageBox.Show("Ура я сюда зашёл");
+                    if (CurrentPlayer == 1)
+                        Board._area[cell.RowNumber - 1, cell.ColumnNumber - 2].IsOccupiedByWhite = false;
+                    else if (CurrentPlayer == 2)
+                        Board._area[cell.RowNumber - 1, cell.ColumnNumber - 2].IsOccupiedByBlack = false;
+                }
+
+                if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber + 2) == true)
+                {
+                    MessageBox.Show("Ура я сюда зашёл");
+                    if (CurrentPlayer == 1)
+                        Board._area[cell.RowNumber - 1, cell.ColumnNumber + 2].IsOccupiedByWhite = false;
+                    else if (CurrentPlayer == 2)
+                        Board._area[cell.RowNumber - 1, cell.ColumnNumber + 2].IsOccupiedByBlack = false;
+                }
+
+
+                //for (i = 0; i < 8; i++)
+                //{
+                //    for (j = 0; j < 8; j++)
+                //    {
+                //        Board._area[i, j].IsOccupiedByWhite = false;
+                //        Board._area[i, j].IsOccupiedByBlack = false;
+                //    }
+                //}
             }
         }
 

@@ -20,13 +20,13 @@ namespace ChessBoard
             _area = new Cell[8, 8];
             for (int i = 0; i < _area.GetLength(0); i++)
                 for (int j = 0; j < _area.GetLength(1); j++)
-                    _area[i, j] = new Cell(i,j);
+                    _area[i, j] = new Cell(i, j);
         }
 
-        public IEnumerator<Cell> GetEnumerator() 
+        public IEnumerator<Cell> GetEnumerator()
             => _area.Cast<Cell>().GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator() 
+        IEnumerator IEnumerable.GetEnumerator()
             => _area.GetEnumerator();
     }
 }
