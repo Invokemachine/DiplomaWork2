@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessBoard.Windows"
         mc:Ignorable="d"
-        Title="BeginnerTheoryWindow" Height="700" Width="520">
+        Title="Theory for beginners" Height="700" Width="520">
     <Grid Background="#EFE0E0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>

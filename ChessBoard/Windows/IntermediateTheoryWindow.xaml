@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessBoard.Windows"
         mc:Ignorable="d"
-        Title="IntermediateTheoryWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="IntermediateTheoryWindow" Height="700" Width="520">
+    <Grid Background="#EFE0E0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="0.7*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <WrapPanel>
+            <Button x:Name="BackButton" Width="40" Content='⏎' Click="BackButton_Click"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="0" Margin="10" Grid.Column="1">
+            <Label Content="Chess coaching" FontSize="36"/>
+            <Image Source="/Resources/Queen1.png"></Image>
+        </WrapPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Height="60">
+            <Label x:Name="TitleLabel" Content="How to avoid stalemates" FontSize="25"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="2" Grid.Column="1">
+            <StackPanel>
+                <TextBlock x:Name="TextBlock1" Text="As you all know: stalemate is a situation where the enemy’s king has no moves on their turn. If the same happens while it’s not your opponent’s move you still can make a move to free up some space near the king or let your opponent have some other move. So how to always avoid these situations? These hints will help you to memorize the ways and upgrade your board vision." Margin="5" FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify"/>
+                <TextBlock x:Name="TextBlock2" Text="First of all, pay attention on the square where the enemy's king placed at the moment: if it's placed in some empty place on the board - try to cut him off the escape squares and let the king have 2 free squares for shuffling from one to other." FontSize="18" FontFamily="Segoe UI Black" Margin="5" TextAlignment="Justify"/>
+                <TextBlock x:Name="TextBlock3" Text="The second is don't forget about other pieces on the board: if the enemy's king has no escape, you won't make a stalemate until all of the other pieces are gone or unable to move." FontSize="18" FontFamily="Segoe UI Black" Margin="5" TextAlignment="Justify"/>
+                <TextBlock x:Name="TextBlock4" Text="The third is try to give a checks if it's possible. Sometimes you can checkmate your opponent by accident so it's better if every attacking move would be a check." FontSize="18" FontFamily="Segoe UI Black" Margin="5" TextAlignment="Justify"/>
+                <TextBlock x:Name="TextBlock5" Text="Sacrifice material if necessary. WInning a lot of material doesn't always mean winning the game. On the chess board might occure positions which will lead to stalemate after picking up the next opponent's piece. Try not to be greedy, follow the previous rules better: throw a checks, outzone the king and guard your own king." FontSize="18" FontFamily="Segoe UI Black" Margin="5" TextAlignment="Justify"/>
+                <Label x:Name="Title1" Content="Pawns" HorizontalAlignment="Center" FontSize="24"/>
+                <Border BorderBrush="Black" BorderThickness="1" Height="200" Width="200">
+                    <Image Source="/Resources/BasicsTheory/1.png" Stretch="Fill"/>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

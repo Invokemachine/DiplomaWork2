@@ -101,7 +101,7 @@ namespace ChessBoard {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ChessBoard;component/windows/ruleswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ChessBoard;V1.0.0.0;component/windows/ruleswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\RulesWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

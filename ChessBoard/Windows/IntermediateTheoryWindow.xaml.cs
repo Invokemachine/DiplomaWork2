@@ -23,5 +23,12 @@ namespace ChessBoard.Windows
         {
             InitializeComponent();
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            RulesWindow rules = new RulesWindow();
+            rules.Show();
+            Close();
+        }
     }
 }
