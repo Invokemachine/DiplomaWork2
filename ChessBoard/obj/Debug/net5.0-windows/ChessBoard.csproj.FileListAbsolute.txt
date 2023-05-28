@@ -40,3 +40,11 @@ C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Wi
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\PlayWindow.baml
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\PuzzlesWindow.baml
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\RulesWindow.baml
+C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\AdvancedTheoryWindow.g.cs
+C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\BasicsWindow.g.cs
+C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\BeginnerTheoryWindow.g.cs
+C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\IntermediateTheoryWindow.g.cs
+C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\AdvancedTheoryWindow.baml
+C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\BasicsWindow.baml
+C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\BeginnerTheoryWindow.baml
+C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\IntermediateTheoryWindow.baml

@@ -1,4 +1,5 @@
-﻿using DiplomaApp;
+﻿using ChessBoard.Windows;
+using DiplomaApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,6 +60,13 @@ namespace ChessBoard
         {
             MainWindow mainWindow = new();
             mainWindow.Show();
+            Close();
+        }
+
+        private void HowToPlayButton_Click(object sender, RoutedEventArgs e)
+        {
+            BasicsWindow basics = new BasicsWindow();
+            basics.Show();
             Close();
         }
     }

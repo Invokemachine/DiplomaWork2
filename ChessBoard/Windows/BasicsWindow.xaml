@@ -1,0 +1,69 @@
+﻿<Window x:Class="ChessBoard.Windows.BasicsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChessBoard.Windows"
+        mc:Ignorable="d"
+        Title="Rules of chess" Height="700" Width="520">
+    <Grid Background="#EFE0E0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="0.7*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <WrapPanel>
+            <Button x:Name="BackButton" Width="40" Content='⏎' Click="BackButton_Click"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="0" Margin="10" Grid.Column="1">
+            <Label Content="Chess coaching" FontSize="36"/>
+            <Image Source="/Resources/Queen1.png"></Image>
+        </WrapPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Height="60">
+            <Label x:Name="TitleLabel" Content="Movement" FontSize="25"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="2" Grid.Column="1">
+            <StackPanel>
+                <TextBlock x:Name="TextBlock1" Text="Learn how pieces in chess can move is one of the most important basic parts." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Center"/>
+                <Label x:Name="Title1" Content="Pawns" HorizontalAlignment="Center" FontSize="24"/>
+                <Border BorderBrush="Black" BorderThickness="1" Height="200" Width="200">
+                    <Image Source="/Resources/BasicsTheory/1.png" Stretch="Fill"/>
+                </Border>
+                <TextBlock x:Name="TextBlock2" Text="If the pawn never moved from the 2nd (or the 6th for black) row it can move on 1 or 2 squares in front of itself. If the pawn moved at least once it can move forward only on 1 square for 1 move. By getting to the opposite side of the board pawn can become any other piece: knight, bishop, rook or queen." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
+                <Border BorderBrush="Black" BorderThickness="1" Height="200" Width="200">
+                    <Image Source="/Resources/BasicsTheory/2.png" Stretch="Fill"/>
+                </Border>
+                <TextBlock x:Name="TextBlock3" Text="In this case c pawn is blocked by enemy’s knight as well as b pawn is stuck behind white’s dark-square bishop. But pawns can capture enemy’s pieces diagonally on 1 square in front them. So if in this position white would have 3 moves in a row they could capture all of the black’s queens and promote." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
+                <Label x:Name="Title2" Content="Knights" HorizontalAlignment="Center" FontSize="24"/>
+                <Border BorderBrush="Black" BorderThickness="1" Height="200" Width="200">
+                    <Image Source="/Resources/BasicsTheory/3.png" Stretch="Fill"/>
+                </Border>
+                <TextBlock x:Name="TextBlock4" Text="Knight is the only chess piece which can jump over any other pieces and knights move 2 squares up or down and 1 on the left or right and etc (alike letter “L” upside down)." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
+                <Label x:Name="Title3" Content="Bishops" HorizontalAlignment="Center" FontSize="24"/>
+                <Border BorderBrush="Black" BorderThickness="1" Height="200" Width="200">
+                    <Image Source="/Resources/BasicsTheory/4.png" Stretch="Fill"/>
+                </Border>
+                <TextBlock x:Name="TextBlock5" Text="Bishop can move on any quantity of squares diagonally but they can not change their basic color. Bishops are very useful together. In the most of cases advantage is given to the side with centralized and supporting each other pieces and better placed bishops." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
+                <Label x:Name="Title4" Content="Queen" HorizontalAlignment="Center" FontSize="24"/>
+                <Border BorderBrush="Black" BorderThickness="1" Height="200" Width="200">
+                    <Image Source="/Resources/BasicsTheory/5.png" Stretch="Fill"/>
+                </Border>
+                <TextBlock x:Name="TextBlock6" Text="The queen is the most powerful of all pieces. It's worth more than any other piece and that is why it is dangerous to try to attack your opponent without other pieces, queen can't cause damage to the opponents king only by itself. Queen is able to move in any direction through any amount of squares." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
+                <Label x:Name="Title5" Content="Rooks" HorizontalAlignment="Center" FontSize="24"/>
+                <Border BorderBrush="Black" BorderThickness="1" Height="200" Width="200">
+                    <Image Source="/Resources/BasicsTheory/6.png" Stretch="Fill"/>
+                </Border>
+                <TextBlock x:Name="TextBlock7" Text="Rooks can move straight up, down, left or right. Rooks are very useful on the open files." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
+                <Label x:Name="Title6" Content="Castling" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="TextBlock8" Text="If your king and rook have never moved in game, you can use the rule of casteling the king to hide him in the more safe side of the board. Castling moves the rook next to the kings home square and moves the king next to the rook on side which was chosen for casting." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
+                <Label x:Name="Title7" Content="Capturing" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="TextBLock9" Text="Pieces can capture each other dure the game, for any piece except the pawn capturing is allowed when the opponent's piece is placed at one of the possible squares for moving the chosen piece. Pawns can capture other pieces only when they are placed diagonally in front." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

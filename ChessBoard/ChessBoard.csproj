@@ -13,6 +13,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\BasicsTheory\1.PNG" />
+    <None Remove="Resources\BasicsTheory\2.PNG" />
+    <None Remove="Resources\BasicsTheory\3.PNG" />
+    <None Remove="Resources\BasicsTheory\4.PNG" />
+    <None Remove="Resources\BasicsTheory\5.PNG" />
+    <None Remove="Resources\BasicsTheory\6.PNG" />
+    <None Remove="Resources\ChessPieces.png" />
+    <None Remove="Resources\Flag_of_Russia.png" />
+    <None Remove="Resources\Flag_of_South_Korea.png" />
+    <None Remove="Resources\Flag_of_the_United_Kingdom.png" />
+    <None Remove="Resources\Queen1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <COMReference Include="SpeechLib">
       <WrapperTool>tlbimp</WrapperTool>
       <VersionMinor>4</VersionMinor>
@@ -22,6 +36,20 @@
       <Isolated>false</Isolated>
       <EmbedInteropTypes>true</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\BasicsTheory\1.PNG" />
+    <Resource Include="Resources\BasicsTheory\2.PNG" />
+    <Resource Include="Resources\BasicsTheory\3.PNG" />
+    <Resource Include="Resources\BasicsTheory\4.PNG" />
+    <Resource Include="Resources\BasicsTheory\5.PNG" />
+    <Resource Include="Resources\BasicsTheory\6.PNG" />
+    <Resource Include="Resources\ChessPieces.png" />
+    <Resource Include="Resources\Flag_of_Russia.png" />
+    <Resource Include="Resources\Flag_of_South_Korea.png" />
+    <Resource Include="Resources\Flag_of_the_United_Kingdom.png" />
+    <Resource Include="Resources\Queen1.png" />
   </ItemGroup>
 
   <ItemGroup>
