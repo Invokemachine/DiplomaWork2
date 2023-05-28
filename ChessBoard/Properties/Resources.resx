@@ -121,8 +121,14 @@
   <data name="1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BasicsTheory\1.PNG;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BeginnersTheory\1.PNG;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BasicsTheory\2.PNG;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BeginnersTheory\2.PNG;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BasicsTheory\3.PNG;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -136,6 +142,9 @@
   <data name="6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BasicsTheory\6.PNG;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="bishop.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BeginnersTheory\bishop.svg.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="ChessPieces" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ChessPieces.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -148,7 +157,22 @@
   <data name="Flag_of_the_United_Kingdom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Flag_of_the_United_Kingdom.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="King" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BeginnersTheory\King.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="knight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BeginnersTheory\knight.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pawn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BeginnersTheory\pawn.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Queen.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BeginnersTheory\Queen.svg.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Queen1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Queen1.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="rook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BeginnersTheory\rook.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

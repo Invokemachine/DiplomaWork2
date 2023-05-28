@@ -69,5 +69,12 @@ namespace ChessBoard
             basics.Show();
             Close();
         }
+
+        private void BeginnerTheoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            BeginnerTheoryWindow beginnerTheoryWindow = new BeginnerTheoryWindow();
+            beginnerTheoryWindow.Show();
+            Close();
+        }
     }
 }

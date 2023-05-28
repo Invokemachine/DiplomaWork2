@@ -26,7 +26,9 @@ namespace ChessBoard.Windows
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-
+            RulesWindow rulesWindow = new RulesWindow();
+            rulesWindow.Show();
+            Close();
         }
     }
 }

@@ -17,18 +17,54 @@
             <RowDefinition Height="0.7*"></RowDefinition>
             <RowDefinition Height="5*"></RowDefinition>
         </Grid.RowDefinitions>
-        <WrapPanel>
+        <WrapPanel Height="auto" Width="auto">
             <Button x:Name="BackButton" Width="40" Content='⏎' Click="BackButton_Click"/>
         </WrapPanel>
-        <WrapPanel Grid.Row="0" Margin="10" Grid.Column="1">
+        <WrapPanel Grid.Row="0" Margin="10" Grid.Column="1" Height="auto" Width="auto">
             <Label Content="Chess coaching" FontSize="36"/>
             <Image Source="/Resources/Queen1.png"></Image>
         </WrapPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Height="60">
-            <Label x:Name="TitleLabel" Content="Content" FontSize="25"/>
+            <Label x:Name="TitleLabel" Content="Arrangement of chess pieces" FontSize="25"/>
         </StackPanel>
         <ScrollViewer Grid.Row="2" Grid.Column="1">
-            
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Image Source="/Resources/BeginnersTheory/pawn.png"/>
+                    <TextBlock x:Name="PawnTextBlock" Grid.Column="1" Text="= 1 pawn" FontSize="30" FontFamily="Segoe UI Black" VerticalAlignment="Center"/>
+                    <Image Source="/Resources/BeginnersTheory/knight.png" Grid.Row="1"/>
+                    <TextBlock x:Name="KnightTextBlock" Grid.Column="1" Grid.Row="1" Text="= 3 pawns" FontSize="30" FontFamily="Segoe UI Black" VerticalAlignment="Center"/>
+                    <Image Source="/Resources/BeginnersTheory/bishop.svg.png" Grid.Row="2"/>
+                    <TextBlock x:Name="BishopTextBlock" Grid.Column="1" Grid.Row="2" Text="= 3 pawns" FontSize="30" FontFamily="Segoe UI Black" VerticalAlignment="Center"/>
+                    <Image Source="/Resources/BeginnersTheory/rook.png" Grid.Row="3"/>
+                    <TextBlock x:Name="RookTextBlock" Grid.Column="1" Grid.Row="3" Text="= 5 pawns" FontSize="30" FontFamily="Segoe UI Black" VerticalAlignment="Center"/>
+                    <Image Source="/Resources/BeginnersTheory/queen.svg.png" Grid.Row="4"/>
+                    <TextBlock x:Name="QueenTextBlock" Grid.Column="1" Grid.Row="4" Text="= 9 pawns" FontSize="30" FontFamily="Segoe UI Black" VerticalAlignment="Center"/>
+                    <Image Source="/Resources/BeginnersTheory/king.png" Grid.Row="5"/>
+                    <TextBlock x:Name="KingTextBlock" Grid.Column="1" Grid.Row="5" Text="The king is priceless. If you lost the king, the game is over" FontSize="30" FontFamily="Segoe UI Black" VerticalAlignment="Center" TextAlignment="Center"/>
+                </Grid>
+                <TextBlock x:Name="TextBlock1" Text="For arrangement of pieces position on the board actually matters. Sometimes piece can cost much more only because it gives positional advantage." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
+                <Border BorderBrush="Black" BorderThickness="1">
+                    <Image Source="/Resources/BeginnersTheory/1.png"/>
+                </Border>
+                <TextBlock x:Name="TextBlock2" Text="As example this position shows on evaluation bar that white is positionally almost up a pawn according to Stockfish because the bishop already stays on big opened diagonal and it gives advantage to white. It covers more squares than any other bishop on the board so we can say that it costs more than just 3 pawns."  FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
+                <Border BorderBrush="Black" BorderThickness="1">
+                    <Image Source="/Resources/BeginnersTheory/2.png"/>
+                </Border>
+                <TextBlock x:Name="TextBlock3" Text="Or in this position computer gives big advantage to white even though they’re down 6 points of material but the pawns on b6 and c6 are too strong and nobody can’t stop them from queening and it doesn’t matter what black are about to do, white is still gonna win."  FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </Window>

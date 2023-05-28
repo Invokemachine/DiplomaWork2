@@ -24,7 +24,7 @@
         <StackPanel Grid.Row="1" Grid.Column="1">
             <Label x:Name="TitleLabel" Content="Choose the level for yourself:" HorizontalAlignment="Center"/>
             <Button x:Name="HowToPlayButton" Content="How to play" Click="HowToPlayButton_Click"></Button>
-            <Button x:Name="BeginnerTheoryButton" Content="Beginner"></Button>
+            <Button x:Name="BeginnerTheoryButton" Content="Beginner" Click="BeginnerTheoryButton_Click"></Button>
             <Button x:Name="IntermediateTheoryButton" Content="Intermidiate"></Button>
             <Button x:Name="AdvancedTheoryButton" Content="Advanced"></Button>
         </StackPanel>
