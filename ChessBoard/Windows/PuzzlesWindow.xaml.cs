@@ -25,6 +25,29 @@ namespace ChessBoard
             InitializeComponent();
             DataContext = new MainViewModel();
             SetupBoard();
+            TranslateMethod();
+        }
+
+        private void TranslateMethod()
+        {
+            if(MainViewModel.CurrentLanguage == "English")
+            {
+                PreviousButton.Content = "Previous";
+                NextButton.Content = "Next";
+                CheckButton.Content = "Check";
+            }
+            else if (MainViewModel.CurrentLanguage == "Russian")
+            {
+                PreviousButton.Content = "Прошлая";
+                NextButton.Content = "Следующая";
+                CheckButton.Content = "Проверить";
+            }
+            else if (MainViewModel.CurrentLanguage == "Korean")
+            {
+                PreviousButton.Content = "이전의";
+                NextButton.Content = "다음";
+                CheckButton.Content = "확인";
+            }
         }
 
         private void SetupBoard()

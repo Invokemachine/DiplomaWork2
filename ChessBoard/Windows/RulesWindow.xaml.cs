@@ -83,5 +83,12 @@ namespace ChessBoard
             intermediateTheoryWindow.Show();
             Close();
         }
+
+        private void AdvancedTheoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            AdvancedTheoryWindow advanced = new AdvancedTheoryWindow();
+            advanced.Show();
+            Close();
+        }
     }
 }

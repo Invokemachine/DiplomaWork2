@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessBoard"
         mc:Ignorable="d"
-        Title="AboutCreator" Height="600" Width="500">
+        Title="AboutCreator" Height="700" Width="500">
     <Grid Background="#EFE0E0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
@@ -25,17 +25,18 @@
             <Label x:Name="TitleLabel" Content="Creators"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <TextBlock FontSize="20" TextAlignment="Center">
+            <TextBlock x:Name="TextBlock1" FontSize="20" TextAlignment="Center">
                 Application was made by student of Kazan National Research Technical University (KNRTU) as graduate work, Nuryev Adele group 4432
             </TextBlock>
-            <TextBlock FontSize="20" TextAlignment="Center">
+            <TextBlock x:Name="TextBlock2" FontSize="20" TextAlignment="Center">
                 If you have any questions, you may use our contact list down below to ask at any time:
             </TextBlock>
             <StackPanel>
-                <Label Content="Instagram: hold on, this one ain't working"/>
-                <Label Content="VK: vk.com/adelechoiii"/>
-                <Label Content="Email: icestorm17@mail.ru"/>
-                <Label Content="KakaoTalk: Immortaaal"/>
+                <Label x:Name="Label1" Content="Instagram: hold on, this one ain't working"/>
+                <Label x:Name="Label2" Content="VK: vk.com/adelechoiii"/>
+                <Label x:Name="Label3" Content="Email: icestorm17@mail.ru"/>
+                <Label x:Name="Label4" Content="Email2: dotacourierentertainment@mail.ru"/>
+                <Label x:Name="Label5" Content="KakaoTalk: Immortaaal"/>
             </StackPanel>
         </StackPanel>
         <WrapPanel>

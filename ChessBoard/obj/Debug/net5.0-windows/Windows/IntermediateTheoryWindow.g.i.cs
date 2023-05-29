@@ -109,7 +109,7 @@ namespace ChessBoard.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ChessBoard;V1.0.0.0;component/windows/intermediatetheorywindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ChessBoard;component/windows/intermediatetheorywindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\IntermediateTheoryWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

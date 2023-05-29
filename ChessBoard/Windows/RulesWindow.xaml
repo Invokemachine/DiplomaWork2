@@ -26,7 +26,7 @@
             <Button x:Name="HowToPlayButton" Content="How to play" Click="HowToPlayButton_Click"></Button>
             <Button x:Name="BeginnerTheoryButton" Content="Beginner" Click="BeginnerTheoryButton_Click"></Button>
             <Button x:Name="IntermediateTheoryButton" Content="Intermidiate" Click="IntermediateTheoryButton_Click"></Button>
-            <Button x:Name="AdvancedTheoryButton" Content="Advanced"></Button>
+            <Button x:Name="AdvancedTheoryButton" Content="Advanced" Click="AdvancedTheoryButton_Click"></Button>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="2">
             <Image Source="C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\Resources\ChessPieces.png" HorizontalAlignment="Center" Stretch="Fill"></Image>

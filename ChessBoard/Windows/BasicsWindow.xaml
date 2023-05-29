@@ -60,9 +60,9 @@
                 </Border>
                 <TextBlock x:Name="TextBlock7" Text="Rooks can move straight up, down, left or right. Rooks are very useful on the open files." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
                 <Label x:Name="Title6" Content="Castling" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="TextBlock8" Text="If your king and rook have never moved in game, you can use the rule of casteling the king to hide him in the more safe side of the board. Castling moves the rook next to the kings home square and moves the king next to the rook on side which was chosen for casting." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
+                <TextBlock x:Name="TextBlock8" Text="If your king and rook have never moved in game, you can use the rule of castling the king to hide him in the more safe side of the board. Castling moves the rook next to the kings home square and moves the king next to the rook on side which was chosen for casting." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
                 <Label x:Name="Title7" Content="Capturing" HorizontalAlignment="Center"/>
-                <TextBlock x:Name="TextBLock9" Text="Pieces can capture each other dure the game, for any piece except the pawn capturing is allowed when the opponent's piece is placed at one of the possible squares for moving the chosen piece. Pawns can capture other pieces only when they are placed diagonally in front." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
+                <TextBlock x:Name="TextBlock9" Text="Pieces can capture each other during the game, for any piece except the pawn capturing is allowed when the opponent's piece is placed at one of the possible squares for moving the chosen piece. Pawns can capture other pieces only when they are placed diagonally in front." FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify" Margin="5"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>
