@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessBoard.Windows"
         mc:Ignorable="d"
-        Title="AdvancedTheoryWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="AdvancedTheoryWindow" Height="720" Width="500">
+    <Grid Background="#EFE0E0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="0.7*"></RowDefinition>
+            <RowDefinition Height="5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <WrapPanel>
+            <Button x:Name="BackButton" Width="40" Content='⏎' Click="BackButton_Click"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="0" Margin="10" Grid.Column="1">
+            <Label Content="Chess coaching" FontSize="36"/>
+            <Image Source="/Resources/Queen1.png"></Image>
+        </WrapPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Height="60">
+            <Label x:Name="TitleLabel" Content="How to face bad openings" FontSize="25"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="2" Grid.Column="1">
+            <StackPanel>
+                <TextBlock x:Name="TextBlock1" Text="Bad opening skills is a sign of a player with poor knowledge of theory. First of all, you need to study tricks in the openings you play to get better with every game. It’s almost completely useless to practice many different openings one by one and changing them every game so every clever player should stick to the one at the beginning. Opening is the stage of the game where you can get an easy advantage of player that doesn’t know what they're doing and what do they want from the opening." Margin="5" FontSize="18" FontFamily="Segoe UI Black" TextAlignment="Justify"/>
+                <TextBlock x:Name="TextBlock2" Text="Every single one of existing openings was designed to get position with convinient development, flexible attacking ideas and tested against perfect play." FontSize="18" FontFamily="Segoe UI Black" Margin="5" TextAlignment="Justify"/>
+                <TextBlock x:Name="TextBlock3" Text="That is why in the most of openings one little mistake could be punished by getting quick positional or material advantage and for this you firstly have to know what was your opening designed for." FontSize="18" FontFamily="Segoe UI Black" Margin="5" TextAlignment="Justify"/>
+                <TextBlock x:Name="TextBlock4" Text="If you are convienced in your opening knowledge and you see move by your opponent that you've never seen before, it most likely will be an innacuracy or mistake." FontSize="18" FontFamily="Segoe UI Black" Margin="5" TextAlignment="Justify"/>
+                <TextBlock x:Name="TextBlock5" Text="To get rid of opponents mistakes you need to understand what was changed in postition: which piece has moved in wrong direction, which piece was blocked and what it supposed to be defending." FontSize="18" FontFamily="Segoe UI Black" Margin="5" TextAlignment="Justify"/>
+                <TextBlock x:Name="TextBlock6" Text="Apply more pressure on the weakest places on the opponent's side of the board immediately and don't forget about the main principles of chess." FontSize="18" FontFamily="Segoe UI Black" Margin="5" TextAlignment="Justify"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

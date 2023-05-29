@@ -76,5 +76,12 @@ namespace ChessBoard
             beginnerTheoryWindow.Show();
             Close();
         }
+
+        private void IntermediateTheoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            IntermediateTheoryWindow intermediateTheoryWindow = new IntermediateTheoryWindow();
+            intermediateTheoryWindow.Show();
+            Close();
+        }
     }
 }
