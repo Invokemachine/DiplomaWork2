@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessBoard"
         mc:Ignorable="d"
-        Title="AboutCreator" Height="700" Width="500">
+        Title="AboutCreator" Height="700" Width="520">
     <Grid Background="#EFE0E0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
