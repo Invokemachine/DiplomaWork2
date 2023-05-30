@@ -684,7 +684,7 @@ namespace ChessBoard
                                         }
                                         if (InsideBorder(cell.RowNumber - 2, cell.ColumnNumber + 1))
                                         {
-                                            Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].IsOccupiedByWhite = true;
+                                            Board._area[cell.RowNumber - 2, cell.ColumnNumber + 1].IsOccupiedByWhite = true;
                                         }
                                     }
                                     if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber + 1))
@@ -701,8 +701,10 @@ namespace ChessBoard
                         else if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber) == true && cell.RowNumber != 6 && Board._area[cell.RowNumber - 1, cell.ColumnNumber].State == State.Empty)
                         {
                             Board._area[cell.RowNumber - 1, cell.ColumnNumber].PossibleMove = true;
-                            Board._area[cell.RowNumber - 1, cell.ColumnNumber - 1].IsOccupiedByWhite = true;
-                            Board._area[cell.RowNumber - 1, cell.ColumnNumber + 1].IsOccupiedByWhite = true;
+                            if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber - 1))
+                                Board._area[cell.RowNumber - 1, cell.ColumnNumber - 1].IsOccupiedByWhite = true;
+                            if(InsideBorder(cell.RowNumber - 1, cell.ColumnNumber + 1))
+                                Board._area[cell.RowNumber - 1, cell.ColumnNumber + 1].IsOccupiedByWhite = true;
 
                         }
                         if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber - 1) == true)
@@ -1342,7 +1344,7 @@ namespace ChessBoard
                                                 {
                                                     Board._area[cell.RowNumber + 2, cell.ColumnNumber - 1].IsOccupiedByBlack = true;
                                                 }
-                                                if (InsideBorder(cell.RowNumber + 2, cell.ColumnNumber + 1))
+                                                if (InsideBorder(cell.RowNumber + 2, cell.ColumnNumber - 1))
                                                 {
                                                     Board._area[cell.RowNumber + 2, cell.ColumnNumber - 1].IsOccupiedByBlack = true;
                                                 }
