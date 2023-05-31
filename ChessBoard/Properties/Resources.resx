@@ -148,11 +148,26 @@
   <data name="6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BasicsTheory\6.PNG;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="AlirezaFirouzja" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Players\AlirezaFirouzja.jpeg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AnandVishy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Players\AnandVishy.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AnishGiri" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Players\AnishGiri.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="bishop.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BeginnersTheory\bishop.svg.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ChessPieces" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ChessPieces.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DingLiren" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Players\DingLiren.jpeg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FabianoCaruana" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Players\FabianoCaruana.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Flag_of_Russia" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Flag_of_Russia.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -163,11 +178,20 @@
   <data name="Flag_of_the_United_Kingdom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Flag_of_the_United_Kingdom.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="HikaruNakamura" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Players\HikaruNakamura.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="King" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BeginnersTheory\King.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="knight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BeginnersTheory\knight.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MagnusCarlsen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Players\MagnusCarlsen.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Nepo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Players\Nepo.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="pawn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BeginnersTheory\pawn.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -180,5 +204,11 @@
   </data>
   <data name="rook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BeginnersTheory\rook.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="TeimourRadjabov" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Players\TeimourRadjabov.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="WesleySo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Players\WesleySo.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

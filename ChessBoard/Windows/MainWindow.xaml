@@ -27,6 +27,7 @@
             <Button x:Name="ToHistoryButton" Content="Game's history" Click="ToHistoryButton_Click"></Button>
             <Button x:Name="ToLanguageChanging" Content="Language" Click="ToLanguageChanging_Click"></Button>
             <Button x:Name="AboutCreatorButton" Content="Creator" Click="AboutCreatorButton_Click"></Button>
+            <Button x:Name="ChampionsListButton" Content="Best players" Click="ChampionsListButton_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

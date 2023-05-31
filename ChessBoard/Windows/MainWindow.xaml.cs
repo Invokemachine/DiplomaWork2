@@ -1,4 +1,5 @@
 ﻿using ChessBoard;
+using ChessBoard.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -100,6 +101,13 @@ namespace DiplomaApp
         {
             PuzzlesWindow puzzlesWindow = new();
             puzzlesWindow.Show();
+            Close();
+        }
+
+        private void ChampionsListButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChampionsWindow championsWindow = new();
+            championsWindow.Show();
             Close();
         }
     }

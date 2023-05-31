@@ -48,3 +48,5 @@ C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Wi
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\BasicsWindow.baml
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\BeginnerTheoryWindow.baml
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\IntermediateTheoryWindow.baml
+C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\ChampionsWindow.g.cs
+C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\Windows\ChampionsWindow.baml
