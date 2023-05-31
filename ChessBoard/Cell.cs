@@ -5,8 +5,6 @@
         private State _state;
         private bool _active;
         private bool _possiblemove;
-        private bool _isoccupiedbyblack;
-        private bool _isoccupiedbywhite;
         public int RowNumber { get; set; }
         public int ColumnNumber { get; set; }
 
@@ -34,24 +32,6 @@
             set
             {
                 _possiblemove = value;
-                OnPropertyChanged();
-            }
-        }
-        public bool IsOccupiedByBlack
-        {
-            get => _isoccupiedbyblack;
-            set
-            {
-                _isoccupiedbyblack = value;
-                OnPropertyChanged();
-            }
-        }
-        public bool IsOccupiedByWhite
-        {
-            get => _isoccupiedbywhite;
-            set
-            {
-                _isoccupiedbywhite = value;
                 OnPropertyChanged();
             }
         }

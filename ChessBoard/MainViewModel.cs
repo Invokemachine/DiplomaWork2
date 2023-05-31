@@ -35,7 +35,7 @@ namespace ChessBoard
         public static IEnumerable<char> Numbers => "87654321";
         public static IEnumerable<char> Letters => "ABCDEFGH";
 
-        public int CurrentPlayer = 0;
+        public static int CurrentPlayer = 0;
         public bool IsItWhitesPiece;
         public bool IsWhitesKingInCheck = false;
         public bool IsBlacksKingInCheck = false;
@@ -79,11 +79,55 @@ namespace ChessBoard
                 else
                     MessageBox.Show("Неверно!");
             }
+            if (CurrentPuzzleName == "PuzzleBeginner4")
+            {
+                if (Board._area[0, 4].State == State.BlackKing && Board._area[4, 2].State == State.WhiteBishop && Board._area[1, 5].State == State.WhiteQueen && Board._area[3, 3].State == State.Empty && Board._area[2, 4].State == State.Empty && Board._area[2, 7].State != State.BlackKnight)
+                {
+                    MessageBox.Show("Верно!");
+                }
+                else
+                    MessageBox.Show("Неверно!");
+            }
+            if (CurrentPuzzleName == "PuzzleBeginner5")
+            {
+                if (Board._area[0, 7].State == State.WhitePawn && Board._area[1, 6].State == State.WhitePawn)
+                {
+                    MessageBox.Show("Верно!");
+                }
+                else
+                    MessageBox.Show("Неверно!");
+            }
         });
+
+        private void PuzzlePlayerChanged()
+        {
+            if (CurrentLanguage == "English")
+            {
+                if (CurrentPlayer == 1)
+                    MessageBox.Show("Move: white");
+                else if (CurrentPlayer == 2)
+                    MessageBox.Show("Move: black");
+            }
+            else if (CurrentLanguage == "Russian")
+            {
+                if (CurrentPlayer == 1)
+                    MessageBox.Show("Ход: белые");
+                else if (CurrentPlayer == 2)
+                    MessageBox.Show("Ход: чёрные");
+            }
+            else if (CurrentLanguage == "Korean")
+            {
+                if (CurrentPlayer == 1)
+                    MessageBox.Show("무브: 하얀색");
+                else if (CurrentPlayer == 2)
+                    MessageBox.Show("무브: 검은색");
+            }
+        }
+
         public ICommand PuzzlePrevious => _puzzleprevious ??= new RelayCommand(parameter =>
         {
             if (CurrentPuzzleNumber == 0)
-                CurrentPuzzleNumber = 3;
+                CurrentPuzzleNumber = 5;
             else if (CurrentPuzzleNumber == 1)
             {
                 CurrentPlayer = 1;
@@ -97,7 +141,8 @@ namespace ChessBoard
                 board[5, 3] = State.BlackPawn;
                 board[4, 3] = State.BlackKing;
                 Board = board;
-                CurrentPuzzleNumber = 3;
+                CurrentPuzzleNumber = 5;
+                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 2)
             {
@@ -112,6 +157,7 @@ namespace ChessBoard
                 board[1, 3] = State.BlackRook;
                 Board = board;
                 CurrentPuzzleNumber--;
+                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 3)
             {
@@ -126,6 +172,61 @@ namespace ChessBoard
                 board[4, 4] = State.BlackPawn;
                 Board = board;
                 CurrentPuzzleNumber--;
+                PuzzlePlayerChanged();
+            }
+            else if (CurrentPuzzleNumber == 4)
+            {
+                CurrentPuzzleName = "PuzzleBeginner4";
+                CurrentPlayer = 1;
+                Board board = new();
+                board[0, 0] = State.BlackRook;
+                board[2, 2] = State.BlackKnight;
+                board[0, 2] = State.BlackBishop;
+                board[0, 3] = State.BlackQueen;
+                board[0, 4] = State.BlackKing;
+                board[0, 6] = State.BlackKnight;
+                board[0, 7] = State.BlackRook;
+                for (int i = 0; i < 8; i++)
+                {
+                    board[1, i] = State.BlackPawn;
+                    board[6, i] = State.WhitePawn;
+                }
+                board[1, 6] = State.BlackBishop;
+                board[2, 3] = State.Empty;
+                board[6, 4] = State.Empty;
+                board[1, 0] = State.Empty;
+                board[2, 6] = State.BlackPawn;
+                board[2, 0] = State.BlackPawn;
+                board[3, 4] = State.BlackPawn;
+                board[4, 4] = State.WhitePawn;
+                board[7, 0] = State.WhiteRook;
+                board[7, 1] = State.WhiteKnight;
+                board[7, 2] = State.WhiteBishop;
+                board[5, 5] = State.WhiteQueen;
+                board[7, 4] = State.WhiteKing;
+                board[4, 2] = State.WhiteBishop;
+                board[6, 4] = State.WhiteKnight;
+                board[7, 7] = State.WhiteRook;
+                Board = board;
+                CurrentPuzzleNumber--;
+                PuzzlePlayerChanged();
+            }
+            else if (CurrentPuzzleNumber == 5)
+            {
+                CurrentPuzzleName = "PuzzleBeginner5";
+                CurrentPlayer = 1;
+                Board board = new();
+                board[0, 0] = State.BlackRook;
+                board[2, 2] = State.BlackKnight;
+                board[3, 2] = State.BlackBishop;
+                board[1, 6] = State.WhitePawn;
+                board[1, 7] = State.WhitePawn;
+                board[4, 1] = State.BlackPawn;
+                board[5, 2] = State.WhiteKing;
+                board[3, 5] = State.BlackKing;
+                Board = board;
+                CurrentPuzzleNumber--;
+                PuzzlePlayerChanged();
             }
         });
         public ICommand PuzzleNext => _puzzlenext ??= new RelayCommand(parameter =>
@@ -145,6 +246,7 @@ namespace ChessBoard
                 board[1, 3] = State.BlackRook;
                 Board = board;
                 CurrentPuzzleNumber++;
+                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 2)
             {
@@ -159,6 +261,7 @@ namespace ChessBoard
                 board[4, 4] = State.BlackPawn;
                 Board = board;
                 CurrentPuzzleNumber++;
+                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 3)
             {
@@ -173,7 +276,62 @@ namespace ChessBoard
                 board[5, 3] = State.BlackPawn;
                 board[4, 3] = State.BlackKing;
                 Board = board;
+                CurrentPuzzleNumber++;
+                PuzzlePlayerChanged();
+            }
+            else if (CurrentPuzzleNumber == 4)
+            {
+                CurrentPuzzleName = "PuzzleBeginner4";
+                CurrentPlayer = 1;
+                Board board = new();
+                board[0, 0] = State.BlackRook;
+                board[2, 2] = State.BlackKnight;
+                board[0, 2] = State.BlackBishop;
+                board[0, 3] = State.BlackQueen;
+                board[0, 4] = State.BlackKing;
+                board[0, 6] = State.BlackKnight;
+                board[0, 7] = State.BlackRook;
+                for (int i = 0; i < 8; i++)
+                {
+                    board[1, i] = State.BlackPawn;
+                    board[6, i] = State.WhitePawn;
+                }
+                board[1, 6] = State.BlackBishop;
+                board[2, 3] = State.Empty;
+                board[6, 4] = State.Empty;
+                board[1, 0] = State.Empty;
+                board[2, 6] = State.BlackPawn;
+                board[2, 0] = State.BlackPawn;
+                board[3, 4] = State.BlackPawn;
+                board[4, 4] = State.WhitePawn;
+                board[7, 0] = State.WhiteRook;
+                board[7, 1] = State.WhiteKnight;
+                board[7, 2] = State.WhiteBishop;
+                board[5, 5] = State.WhiteQueen;
+                board[7, 4] = State.WhiteKing;
+                board[4, 2] = State.WhiteBishop;
+                board[6, 4] = State.WhiteKnight;
+                board[7, 7] = State.WhiteRook;
+                Board = board;
+                CurrentPuzzleNumber++;
+                PuzzlePlayerChanged();
+            }
+            else if (CurrentPuzzleNumber == 5)
+            {
+                CurrentPuzzleName = "PuzzleBeginner5";
+                CurrentPlayer = 1;
+                Board board = new();
+                board[0, 0] = State.BlackRook;
+                board[2, 2] = State.BlackKnight;
+                board[3, 2] = State.BlackBishop;
+                board[1, 6] = State.WhitePawn;
+                board[1, 7] = State.WhitePawn;
+                board[4, 1] = State.BlackPawn;
+                board[5, 2] = State.WhiteKing;
+                board[3, 5] = State.BlackKing;
+                Board = board;
                 CurrentPuzzleNumber = 1;
+                PuzzlePlayerChanged();
             }
         });
 
@@ -202,6 +360,15 @@ namespace ChessBoard
                         DeleteMarks(cell.RowNumber, cell.ColumnNumber);
                     }
                     cell.Active = !cell.Active;
+                }
+                else if (cell.PossibleMove == true && activeCell.State == State.WhitePawn && cell.RowNumber == 0)
+                {
+                    activeCell.Active = false;
+                    cell.State = activeCell.State;
+                    Board._area[cell.RowNumber, cell.ColumnNumber].State = State.WhiteQueen;
+                    activeCell.State = State.Empty;
+                    DeleteMarks(cell.RowNumber, cell.ColumnNumber);
+                    SwitchPlayer();
                 }
                 else if (activeCell != null && IsItWhitesPiece == false)
                 {
@@ -280,6 +447,15 @@ namespace ChessBoard
                         DeleteMarks(cell.RowNumber, cell.ColumnNumber);
                     }
                     cell.Active = !cell.Active;
+                }
+                else if (cell.PossibleMove == true && activeCell.State == State.BlackPawn && cell.RowNumber == 7)
+                {
+                    activeCell.Active = false;
+                    cell.State = activeCell.State;
+                    Board._area[cell.RowNumber, cell.ColumnNumber].State = State.BlackQueen;
+                    activeCell.State = State.Empty;
+                    DeleteMarks(cell.RowNumber, cell.ColumnNumber);
+                    SwitchPlayer();
                 }
                 else if (activeCell != null && IsItWhitesPiece == true)
                 {
@@ -408,16 +584,9 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i != cell.RowNumber && j != cell.ColumnNumber)
                                 {
                                     Board._area[i, j].PossibleMove = true;
-                                    Board._area[i, j].IsOccupiedByWhite = true;
                                     if (Board._area[i, j].State != State.Empty)
                                     {
                                         Board._area[i, j].PossibleMove = true;
-                                        Board._area[i, j].IsOccupiedByWhite = true;
-                                        if (Board._area[i, j].IsOccupiedByWhite == true && Board._area[i, j].State == State.BlackKing)
-                                        {
-                                            MessageBox.Show("Black king is in check!", "Warning");
-                                            IsBlacksKingInCheck = true;
-                                        }
                                         i = i - 8;
                                     }
                                 }
@@ -437,16 +606,9 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i != cell.RowNumber && j != cell.ColumnNumber)
                                 {
                                     Board._area[i, j].PossibleMove = true;
-                                    Board._area[i, j].IsOccupiedByWhite = true;
                                     if (Board._area[i, j].State != State.Empty)
                                     {
                                         Board._area[i, j].PossibleMove = true;
-                                        Board._area[i, j].IsOccupiedByWhite = true;
-                                        if (Board._area[i, j].IsOccupiedByWhite == true && Board._area[i, j].State == State.BlackKing)
-                                        {
-                                            MessageBox.Show("Black king is in check!", "Warning");
-                                            IsBlacksKingInCheck = true;
-                                        }
                                         i = i - 8;
                                     }
                                 }
@@ -466,16 +628,9 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i != cell.RowNumber && j != cell.ColumnNumber)
                                 {
                                     Board._area[i, j].PossibleMove = true;
-                                    Board._area[i, j].IsOccupiedByWhite = true;
                                     if (Board._area[i, j].State != State.Empty)
                                     {
                                         Board._area[i, j].PossibleMove = true;
-                                        Board._area[i, j].IsOccupiedByWhite = true;
-                                        if (Board._area[i, j].IsOccupiedByWhite == true && Board._area[i, j].State == State.BlackKing)
-                                        {
-                                            MessageBox.Show("Black king is in check!", "Warning");
-                                            IsBlacksKingInCheck = true;
-                                        }
                                         i = i + 8;
                                     }
                                 }
@@ -495,16 +650,9 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i != cell.RowNumber && j != cell.ColumnNumber)
                                 {
                                     Board._area[i, j].PossibleMove = true;
-                                    Board._area[i, j].IsOccupiedByWhite = true;
                                     if (Board._area[i, j].State != State.Empty)
                                     {
                                         Board._area[i, j].PossibleMove = true;
-                                        Board._area[i, j].IsOccupiedByWhite = true;
-                                        if (Board._area[i, j].IsOccupiedByWhite == true && Board._area[i, j].State == State.BlackKing)
-                                        {
-                                            MessageBox.Show("Black king is in check!", "Warning");
-                                            IsBlacksKingInCheck = true;
-                                        }
                                         i = i + 8;
                                     }
                                 }
@@ -521,122 +669,106 @@ namespace ChessBoard
                     case State.WhiteKing:
                         i = cell.RowNumber;
                         j = cell.ColumnNumber;
-                        if (InsideBorder(i - 1, j) == true && Board._area[i - 1, j].State == State.Empty && Board._area[i - 1, j].IsOccupiedByBlack == false)
+                        if (InsideBorder(i - 1, j) == true && Board._area[i - 1, j].State == State.Empty)
                         {
                             Board._area[i - 1, j].PossibleMove = true;
-                            Board._area[i - 1, j].IsOccupiedByWhite = true;
                         }
-                        else if (InsideBorder(i - 1, j) == true && Board._area[i - 1, j].State != State.Empty && Board._area[i - 1, j].IsOccupiedByBlack == false)
+                        else if (InsideBorder(i - 1, j) == true && Board._area[i - 1, j].State != State.Empty)
                         {
                             WhichPlayersPiece(cell, i - 1, j);
                             if (IsItWhitesPiece == false)
                             {
-                                Board._area[i - 1, j].IsOccupiedByWhite = true;
                                 Board._area[i - 1, j].PossibleMove = true;
                             }
                         }
 
-                        if (InsideBorder(i + 1, j) == true && Board._area[i + 1, j].State == State.Empty && Board._area[i + 1, j].IsOccupiedByBlack == false)
+                        if (InsideBorder(i + 1, j) == true && Board._area[i + 1, j].State == State.Empty)
                         {
                             Board._area[i + 1, j].PossibleMove = true;
-                            Board._area[i + 1, j].IsOccupiedByWhite = true;
                         }
-                        else if (InsideBorder(i + 1, j) == true && Board._area[i + 1, j].State != State.Empty && Board._area[i + 1, j].IsOccupiedByBlack == false)
+                        else if (InsideBorder(i + 1, j) == true && Board._area[i + 1, j].State != State.Empty)
                         {
                             WhichPlayersPiece(cell, i + 1, j);
                             if (IsItWhitesPiece == false)
                             {
                                 Board._area[i + 1, j].PossibleMove = true;
-                                Board._area[i + 1, j].IsOccupiedByWhite = true;
                             }
                         }
 
-                        if (InsideBorder(i, j - 1) == true && Board._area[i, j - 1].State == State.Empty && Board._area[i, j - 1].IsOccupiedByBlack == false)
+                        if (InsideBorder(i, j - 1) == true && Board._area[i, j - 1].State == State.Empty)
                         {
                             Board._area[i, j - 1].PossibleMove = true;
-                            Board._area[i, j - 1].IsOccupiedByWhite = true;
                         }
-                        else if (InsideBorder(i, j - 1) == true && Board._area[i, j - 1].State != State.Empty && Board._area[i, j - 1].IsOccupiedByBlack == false)
+                        else if (InsideBorder(i, j - 1) == true && Board._area[i, j - 1].State != State.Empty)
                         {
                             WhichPlayersPiece(cell, i, j - 1);
                             if (IsItWhitesPiece == false)
                             {
                                 Board._area[i, j - 1].PossibleMove = true;
-                                Board._area[i, j - 1].IsOccupiedByWhite = true;
                             }
                         }
 
-                        if (InsideBorder(i, j + 1) == true && Board._area[i, j + 1].State == State.Empty && Board._area[i, j + 1].IsOccupiedByBlack == false)
+                        if (InsideBorder(i, j + 1) == true && Board._area[i, j + 1].State == State.Empty)
                         {
                             Board._area[i, j + 1].PossibleMove = true;
-                            Board._area[i, j + 1].IsOccupiedByWhite = true;
                         }
-                        else if (InsideBorder(i, j + 1) == true && Board._area[i, j + 1].State != State.Empty && Board._area[i, j + 1].IsOccupiedByBlack == false)
+                        else if (InsideBorder(i, j + 1) == true && Board._area[i, j + 1].State != State.Empty)
                         {
                             WhichPlayersPiece(cell, i, j + 1);
                             if (IsItWhitesPiece == false)
                             {
                                 Board._area[i, j + 1].PossibleMove = true;
-                                Board._area[i, j + 1].IsOccupiedByWhite = true;
                             }
                         }
 
-                        if (InsideBorder(i - 1, j - 1) == true && Board._area[i - 1, j - 1].State == State.Empty && Board._area[i - 1, j - 1].IsOccupiedByBlack == false)
+                        if (InsideBorder(i - 1, j - 1) == true && Board._area[i - 1, j - 1].State == State.Empty)
                         {
                             Board._area[i - 1, j - 1].PossibleMove = true;
-                            Board._area[i - 1, j - 1].IsOccupiedByWhite = true;
                         }
-                        else if (InsideBorder(i - 1, j - 1) == true && Board._area[i - 1, j - 1].State != State.Empty && Board._area[i - 1, j - 1].IsOccupiedByBlack == false)
+                        else if (InsideBorder(i - 1, j - 1) == true && Board._area[i - 1, j - 1].State != State.Empty)
                         {
                             WhichPlayersPiece(cell, i - 1, j - 1);
                             if (IsItWhitesPiece == false)
                             {
                                 Board._area[i - 1, j - 1].PossibleMove = true;
-                                Board._area[i - 1, j - 1].IsOccupiedByWhite = true;
                             }
                         }
 
-                        if (InsideBorder(i + 1, j + 1) == true && Board._area[i + 1, j + 1].State == State.Empty && Board._area[i + 1, j + 1].IsOccupiedByBlack == false)
+                        if (InsideBorder(i + 1, j + 1) == true && Board._area[i + 1, j + 1].State == State.Empty)
                         {
                             Board._area[i + 1, j + 1].PossibleMove = true;
-                            Board._area[i + 1, j + 1].IsOccupiedByWhite = true;
                         }
-                        else if (InsideBorder(i + 1, j + 1) == true && Board._area[i + 1, j + 1].State != State.Empty && Board._area[i + 1, j + 1].IsOccupiedByBlack == false)
+                        else if (InsideBorder(i + 1, j + 1) == true && Board._area[i + 1, j + 1].State != State.Empty)
                         {
                             WhichPlayersPiece(cell, i + 1, j + 1);
                             if (IsItWhitesPiece == false)
                             {
                                 Board._area[i + 1, j + 1].PossibleMove = true;
-                                Board._area[i + 1, j + 1].IsOccupiedByWhite = true;
                             }
                         }
 
-                        if (InsideBorder(i - 1, j + 1) == true && Board._area[i - 1, j + 1].State == State.Empty && Board._area[i - 1, j + 1].IsOccupiedByBlack == false)
+                        if (InsideBorder(i - 1, j + 1) == true && Board._area[i - 1, j + 1].State == State.Empty)
                         {
                             Board._area[i - 1, j + 1].PossibleMove = true;
-                            Board._area[i - 1, j + 1].IsOccupiedByWhite = true;
                         }
-                        else if (InsideBorder(i - 1, j + 1) == true && Board._area[i - 1, j + 1].State != State.Empty && Board._area[i - 1, j + 1].IsOccupiedByBlack == false)
+                        else if (InsideBorder(i - 1, j + 1) == true && Board._area[i - 1, j + 1].State != State.Empty)
                         {
                             WhichPlayersPiece(cell, i - 1, j + 1);
                             if (IsItWhitesPiece == false)
                             {
                                 Board._area[i - 1, j + 1].PossibleMove = true;
-                                Board._area[i - 1, j + 1].IsOccupiedByWhite = true;
                             }
                         }
-                        if (InsideBorder(i + 1, j - 1) == true && Board._area[i + 1, j - 1].State == State.Empty && Board._area[i + 1, j - 1].IsOccupiedByBlack == false)
+                        if (InsideBorder(i + 1, j - 1) == true && Board._area[i + 1, j - 1].State == State.Empty)
                         {
                             Board._area[i + 1, j - 1].PossibleMove = true;
-                            Board._area[i + 1, j - 1].IsOccupiedByWhite = true;
                         }
-                        else if (InsideBorder(i + 1, j - 1) == true && Board._area[i + 1, j - 1].State != State.Empty && Board._area[i + 1, j - 1].IsOccupiedByBlack == false)
+                        else if (InsideBorder(i + 1, j - 1) == true && Board._area[i + 1, j - 1].State != State.Empty)
                         {
                             WhichPlayersPiece(cell, i + 1, j - 1);
                             if (IsItWhitesPiece == false)
                             {
                                 Board._area[i + 1, j - 1].PossibleMove = true;
-                                Board._area[i + 1, j - 1].IsOccupiedByWhite = true;
                             }
                         }
                         if (Board._area[7, 4].State == State.WhiteKing && Board._area[7, 7].State == State.WhiteRook)
@@ -664,36 +796,13 @@ namespace ChessBoard
                             if (Board._area[cell.RowNumber - 1, cell.ColumnNumber].State == State.Empty)
                             {
                                 Board._area[cell.RowNumber - 1, cell.ColumnNumber].PossibleMove = true;
-                                if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber + 1))
-                                {
-                                    Board._area[cell.RowNumber - 1, cell.ColumnNumber + 1].IsOccupiedByWhite = true;
-                                }
-                                if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber - 1))
-                                {
-                                    Board._area[cell.RowNumber - 1, cell.ColumnNumber - 1].IsOccupiedByWhite = true;
-                                }
+
                                 WhichPlayersPiece(cell, cell.RowNumber - 2, cell.ColumnNumber);
                                 if (Board._area[cell.RowNumber - 2, cell.ColumnNumber].State == State.Empty)
                                 {
                                     if (InsideBorder(cell.RowNumber - 2, cell.ColumnNumber))
                                     {
                                         Board._area[cell.RowNumber - 2, cell.ColumnNumber].PossibleMove = true;
-                                        if (InsideBorder(cell.RowNumber - 2, cell.ColumnNumber - 1))
-                                        {
-                                            Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].IsOccupiedByWhite = true;
-                                        }
-                                        if (InsideBorder(cell.RowNumber - 2, cell.ColumnNumber + 1))
-                                        {
-                                            Board._area[cell.RowNumber - 2, cell.ColumnNumber + 1].IsOccupiedByWhite = true;
-                                        }
-                                    }
-                                    if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber + 1))
-                                    {
-                                        Board._area[cell.RowNumber - 1, cell.ColumnNumber + 1].IsOccupiedByWhite = false;
-                                    }
-                                    if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber - 1))
-                                    {
-                                        Board._area[cell.RowNumber - 1, cell.ColumnNumber - 1].IsOccupiedByWhite = false;
                                     }
                                 }
                             }
@@ -701,10 +810,6 @@ namespace ChessBoard
                         else if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber) == true && cell.RowNumber != 6 && Board._area[cell.RowNumber - 1, cell.ColumnNumber].State == State.Empty)
                         {
                             Board._area[cell.RowNumber - 1, cell.ColumnNumber].PossibleMove = true;
-                            if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber - 1))
-                                Board._area[cell.RowNumber - 1, cell.ColumnNumber - 1].IsOccupiedByWhite = true;
-                            if(InsideBorder(cell.RowNumber - 1, cell.ColumnNumber + 1))
-                                Board._area[cell.RowNumber - 1, cell.ColumnNumber + 1].IsOccupiedByWhite = true;
 
                         }
                         if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber - 1) == true)
@@ -713,7 +818,6 @@ namespace ChessBoard
                             if (IsItWhitesPiece == false && Board._area[cell.RowNumber - 1, cell.ColumnNumber - 1].State != State.Empty)
                             {
                                 Board._area[cell.RowNumber - 1, cell.ColumnNumber - 1].PossibleMove = true;
-                                Board._area[cell.RowNumber - 1, cell.ColumnNumber - 1].IsOccupiedByWhite = true;
                             }
                         }
                         if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber + 1) == true)
@@ -722,7 +826,6 @@ namespace ChessBoard
                             if (IsItWhitesPiece == false && Board._area[cell.RowNumber - 1, cell.ColumnNumber + 1].State != State.Empty)
                             {
                                 Board._area[cell.RowNumber - 1, cell.ColumnNumber + 1].PossibleMove = true;
-                                Board._area[cell.RowNumber - 1, cell.ColumnNumber + 1].IsOccupiedByWhite = true;
                             }
                         }
                         break;
@@ -736,7 +839,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false)
                                 {
                                     Board._area[cell.RowNumber + 2, cell.ColumnNumber + 1].PossibleMove = true;
-                                    Board._area[cell.RowNumber + 2, cell.ColumnNumber + 1].IsOccupiedByWhite = true;
                                 }
                                 else
                                     Board._area[cell.RowNumber + 2, cell.ColumnNumber + 1].PossibleMove = false;
@@ -748,7 +850,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false)
                                 {
                                     Board._area[cell.RowNumber + 2, cell.ColumnNumber - 1].PossibleMove = true;
-                                    Board._area[cell.RowNumber + 2, cell.ColumnNumber - 1].IsOccupiedByWhite = true;
                                 }
                                 else
                                     Board._area[cell.RowNumber + 2, cell.ColumnNumber - 1].PossibleMove = false;
@@ -760,7 +861,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false)
                                 {
                                     Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].PossibleMove = true;
-                                    Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].IsOccupiedByWhite = true;
                                 }
                                 else
                                     Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].PossibleMove = false;
@@ -772,7 +872,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false)
                                 {
                                     Board._area[cell.RowNumber - 2, cell.ColumnNumber + 1].PossibleMove = true;
-                                    Board._area[cell.RowNumber - 2, cell.ColumnNumber + 1].IsOccupiedByWhite = true;
                                 }
                                 else
                                     Board._area[cell.RowNumber - 2, cell.ColumnNumber + 1].PossibleMove = false;
@@ -784,7 +883,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false)
                                 {
                                     Board._area[cell.RowNumber + 1, cell.ColumnNumber + 2].PossibleMove = true;
-                                    Board._area[cell.RowNumber + 1, cell.ColumnNumber + 2].IsOccupiedByWhite = true;
                                 }
                                 else
                                     Board._area[cell.RowNumber + 1, cell.ColumnNumber + 2].PossibleMove = false;
@@ -796,7 +894,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false)
                                 {
                                     Board._area[cell.RowNumber + 1, cell.ColumnNumber - 2].PossibleMove = true;
-                                    Board._area[cell.RowNumber + 1, cell.ColumnNumber - 2].IsOccupiedByWhite = true;
                                 }
                                 else
                                     Board._area[cell.RowNumber + 1, cell.ColumnNumber - 2].PossibleMove = false;
@@ -808,7 +905,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false)
                                 {
                                     Board._area[cell.RowNumber - 1, cell.ColumnNumber - 2].PossibleMove = true;
-                                    Board._area[cell.RowNumber - 1, cell.ColumnNumber - 2].IsOccupiedByWhite = true;
                                 }
                                 else
                                     Board._area[cell.RowNumber - 1, cell.ColumnNumber - 2].PossibleMove = false;
@@ -820,7 +916,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false)
                                 {
                                     Board._area[cell.RowNumber - 1, cell.ColumnNumber + 2].PossibleMove = true;
-                                    Board._area[cell.RowNumber - 1, cell.ColumnNumber + 2].IsOccupiedByWhite = true;
                                 }
                                 else
                                     Board._area[cell.RowNumber - 1, cell.ColumnNumber + 2].PossibleMove = false;
@@ -839,7 +934,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i != cell.RowNumber && j == cell.ColumnNumber && InsideBorder(i, j) == true)
                                 {
                                     Board._area[i, cell.ColumnNumber].PossibleMove = true;
-                                    Board._area[i, cell.ColumnNumber].IsOccupiedByWhite = true;
                                     if (Board._area[i, cell.ColumnNumber].State != State.Empty)
                                         i = i - 8;
                                 }
@@ -856,7 +950,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i != cell.RowNumber && j == cell.ColumnNumber && InsideBorder(i, j) == true)
                                 {
                                     Board._area[i, cell.ColumnNumber].PossibleMove = true;
-                                    Board._area[i, cell.ColumnNumber].IsOccupiedByWhite = true;
                                     if (Board._area[i, cell.ColumnNumber].State != State.Empty)
                                         i = i + 8;
                                 }
@@ -873,7 +966,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i == cell.RowNumber && j != cell.ColumnNumber && InsideBorder(i, j) == true)
                                 {
                                     Board._area[cell.RowNumber, j].PossibleMove = true;
-                                    Board._area[cell.RowNumber, j].IsOccupiedByWhite = true;
                                     if (Board._area[cell.RowNumber, j].State != State.Empty)
                                         j = j - 8;
                                 }
@@ -890,7 +982,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i == cell.RowNumber && j != cell.ColumnNumber && InsideBorder(i, j) == true)
                                 {
                                     Board._area[cell.RowNumber, j].PossibleMove = true;
-                                    Board._area[cell.RowNumber, j].IsOccupiedByWhite = true;
                                     if (Board._area[cell.RowNumber, j].State != State.Empty)
                                         j = j + 8;
                                 }
@@ -913,7 +1004,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i != cell.RowNumber && j == cell.ColumnNumber && InsideBorder(i, j) == true)
                                 {
                                     Board._area[i, cell.ColumnNumber].PossibleMove = true;
-                                    Board._area[i, cell.ColumnNumber].IsOccupiedByWhite = true;
                                     if (Board._area[i, cell.ColumnNumber].State != State.Empty)
                                         i = i - 8;
                                 }
@@ -930,7 +1020,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i != cell.RowNumber && j == cell.ColumnNumber && InsideBorder(i, j) == true)
                                 {
                                     Board._area[i, cell.ColumnNumber].PossibleMove = true;
-                                    Board._area[i, cell.ColumnNumber].IsOccupiedByWhite = true;
                                     if (Board._area[i, cell.ColumnNumber].State != State.Empty)
                                         i = i + 8;
                                 }
@@ -947,7 +1036,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i == cell.RowNumber && j != cell.ColumnNumber && InsideBorder(i, j) == true)
                                 {
                                     Board._area[cell.RowNumber, j].PossibleMove = true;
-                                    Board._area[cell.RowNumber, j].IsOccupiedByWhite = true;
                                     if (Board._area[cell.RowNumber, j].State != State.Empty)
                                         j = j - 8;
                                 }
@@ -964,7 +1052,6 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i == cell.RowNumber && j != cell.ColumnNumber && InsideBorder(i, j) == true)
                                 {
                                     Board._area[cell.RowNumber, j].PossibleMove = true;
-                                    Board._area[cell.RowNumber, j].IsOccupiedByWhite = true;
                                     if (Board._area[cell.RowNumber, j].State != State.Empty)
                                         j = j + 8;
                                 }
@@ -981,10 +1068,8 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i != cell.RowNumber && j != cell.ColumnNumber)
                                 {
                                     Board._area[i, j].PossibleMove = true;
-                                    Board._area[i, j].IsOccupiedByWhite = true;
                                     if (Board._area[i, j].State != State.Empty)
                                     {
-                                        Board._area[i, j].IsOccupiedByWhite = true;
                                         Board._area[i, j].PossibleMove = true;
                                         i = i - 8;
                                     }
@@ -1003,10 +1088,8 @@ namespace ChessBoard
                                 if (IsItWhitesPiece == false && i != cell.RowNumber && j != cell.ColumnNumber)
                                 {
                                     Board._area[i, j].PossibleMove = true;
-                                    Board._area[i, j].IsOccupiedByWhite = true;
                                     if (Board._area[i, j].State != State.Empty)
                                     {
-                                        Board._area[i, j].IsOccupiedByWhite = true;
                                         Board._area[i, j].PossibleMove = true;
                                         i = i - 8;
                                     }
@@ -1026,11 +1109,9 @@ namespace ChessBoard
                                 WhichPlayersPiece(cell, i, j);
                                 if (IsItWhitesPiece == false && i != cell.RowNumber && j != cell.ColumnNumber)
                                 {
-                                    Board._area[i, j].IsOccupiedByWhite = true;
                                     Board._area[i, j].PossibleMove = true;
                                     if (Board._area[i, j].State != State.Empty)
                                     {
-                                        Board._area[i, j].IsOccupiedByWhite = true;
                                         Board._area[i, j].PossibleMove = true;
                                         i = i + 8;
                                     }
@@ -1050,11 +1131,9 @@ namespace ChessBoard
                                 WhichPlayersPiece(cell, i, j);
                                 if (IsItWhitesPiece == false && i != cell.RowNumber && j != cell.ColumnNumber)
                                 {
-                                    Board._area[i, j].IsOccupiedByWhite = true;
                                     Board._area[i, j].PossibleMove = true;
                                     if (Board._area[i, j].State != State.Empty)
                                     {
-                                        Board._area[i, j].IsOccupiedByWhite = true;
                                         Board._area[i, j].PossibleMove = true;
                                         i = i + 8;
                                     }
@@ -1096,10 +1175,8 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i != cell.RowNumber && j != cell.ColumnNumber)
                                         {
                                             Board._area[i, j].PossibleMove = true;
-                                            Board._area[i, j].IsOccupiedByBlack = true;
                                             if (Board._area[i, j].State != State.Empty)
                                             {
-                                                Board._area[i, j].IsOccupiedByBlack = true;
                                                 Board._area[i, j].PossibleMove = true;
                                                 i = i - 8;
                                             }
@@ -1119,12 +1196,10 @@ namespace ChessBoard
                                         WhichPlayersPiece(cell, i, j);
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i != cell.RowNumber && j != cell.ColumnNumber)
                                         {
-                                            Board._area[i, j].IsOccupiedByBlack = true;
                                             Board._area[i, j].PossibleMove = true;
                                             if (Board._area[i, j].State != State.Empty)
                                             {
                                                 Board._area[i, j].PossibleMove = true;
-                                                Board._area[i, j].IsOccupiedByBlack = true;
                                                 i = i - 8;
                                             }
                                         }
@@ -1144,10 +1219,8 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i != cell.RowNumber && j != cell.ColumnNumber)
                                         {
                                             Board._area[i, j].PossibleMove = true;
-                                            Board._area[i, j].IsOccupiedByBlack = true;
                                             if (Board._area[i, j].State != State.Empty)
                                             {
-                                                Board._area[i, j].IsOccupiedByBlack = true;
                                                 Board._area[i, j].PossibleMove = true;
                                                 i = i + 8;
                                             }
@@ -1167,11 +1240,9 @@ namespace ChessBoard
                                         WhichPlayersPiece(cell, i, j);
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i != cell.RowNumber && j != cell.ColumnNumber)
                                         {
-                                            Board._area[i, j].IsOccupiedByBlack = true;
                                             Board._area[i, j].PossibleMove = true;
                                             if (Board._area[i, j].State != State.Empty)
                                             {
-                                                Board._area[i, j].IsOccupiedByBlack = true;
                                                 Board._area[i, j].PossibleMove = true;
                                                 i = i + 8;
                                             }
@@ -1189,116 +1260,100 @@ namespace ChessBoard
                         case State.BlackKing:
                             i = cell.RowNumber;
                             j = cell.ColumnNumber;
-                            if (InsideBorder(i - 1, j) == true && Board._area[i - 1, j].State == State.Empty && Board._area[i - 1, j].IsOccupiedByWhite == false)
+                            if (InsideBorder(i - 1, j) == true && Board._area[i - 1, j].State == State.Empty)
                             {
                                 Board._area[i - 1, j].PossibleMove = true;
-                                Board._area[i - 1, j].IsOccupiedByBlack = true;
                             }
-                            else if (InsideBorder(i - 1, j) == true && Board._area[i - 1, j].State != State.Empty && Board._area[i - 1, j].IsOccupiedByWhite == false)
+                            else if (InsideBorder(i - 1, j) == true && Board._area[i - 1, j].State != State.Empty)
                             {
                                 WhichPlayersPiece(cell, i - 1, j);
                                 if (IsItWhitesPiece == true)
                                 {
-                                    Board._area[i - 1, j].IsOccupiedByBlack = true;
                                     Board._area[i - 1, j].PossibleMove = true;
                                 }
                             }
-                            if (InsideBorder(i + 1, j) == true && Board._area[i + 1, j].State == State.Empty && Board._area[i + 1, j].IsOccupiedByWhite == false)
+                            if (InsideBorder(i + 1, j) == true && Board._area[i + 1, j].State == State.Empty)
                             {
                                 Board._area[i + 1, j].PossibleMove = true;
-                                Board._area[i + 1, j].IsOccupiedByBlack = true;
                             }
-                            else if (InsideBorder(i + 1, j) == true && Board._area[i + 1, j].State != State.Empty && Board._area[i + 1, j].IsOccupiedByWhite == false)
+                            else if (InsideBorder(i + 1, j) == true && Board._area[i + 1, j].State != State.Empty)
                             {
                                 WhichPlayersPiece(cell, i + 1, j);
                                 if (IsItWhitesPiece == true)
                                 {
                                     Board._area[i + 1, j].PossibleMove = true;
-                                    Board._area[i + 1, j].IsOccupiedByBlack = true;
                                 }
                             }
-                            if (InsideBorder(i, j - 1) == true && Board._area[i, j - 1].State == State.Empty && Board._area[i, j - 1].IsOccupiedByWhite == false)
+                            if (InsideBorder(i, j - 1) == true && Board._area[i, j - 1].State == State.Empty)
                             {
                                 Board._area[i, j - 1].PossibleMove = true;
-                                Board._area[i, j - 1].IsOccupiedByBlack = true;
                             }
-                            else if (InsideBorder(i, j - 1) == true && Board._area[i, j - 1].State != State.Empty && Board._area[i, j - 1].IsOccupiedByWhite == false)
+                            else if (InsideBorder(i, j - 1) == true && Board._area[i, j - 1].State != State.Empty)
                             {
                                 WhichPlayersPiece(cell, i, j - 1);
                                 if (IsItWhitesPiece == true)
                                 {
                                     Board._area[i, j - 1].PossibleMove = true;
-                                    Board._area[i, j - 1].IsOccupiedByBlack = true;
                                 }
                             }
-                            if (InsideBorder(i, j + 1) == true && Board._area[i, j + 1].State == State.Empty && Board._area[i, j + 1].IsOccupiedByWhite == false)
+                            if (InsideBorder(i, j + 1) == true && Board._area[i, j + 1].State == State.Empty)
                             {
                                 Board._area[i, j + 1].PossibleMove = true;
-                                Board._area[i, j + 1].IsOccupiedByBlack = true;
                             }
-                            else if (InsideBorder(i, j + 1) == true && Board._area[i, j + 1].State != State.Empty && Board._area[i, j + 1].IsOccupiedByWhite == false)
+                            else if (InsideBorder(i, j + 1) == true && Board._area[i, j + 1].State != State.Empty)
                             {
                                 WhichPlayersPiece(cell, i, j + 1);
                                 if (IsItWhitesPiece == true)
                                 {
                                     Board._area[i, j + 1].PossibleMove = true;
-                                    Board._area[i, j + 1].IsOccupiedByBlack = true;
                                 }
                             }
-                            if (InsideBorder(i - 1, j - 1) == true && Board._area[i - 1, j - 1].State == State.Empty && Board._area[i - 1, j - 1].IsOccupiedByWhite == false)
+                            if (InsideBorder(i - 1, j - 1) == true && Board._area[i - 1, j - 1].State == State.Empty)
                             {
                                 Board._area[i - 1, j - 1].PossibleMove = true;
-                                Board._area[i - 1, j - 1].IsOccupiedByBlack = true;
                             }
-                            else if (InsideBorder(i - 1, j - 1) == true && Board._area[i - 1, j - 1].State != State.Empty && Board._area[i - 1, j - 1].IsOccupiedByWhite == false)
+                            else if (InsideBorder(i - 1, j - 1) == true && Board._area[i - 1, j - 1].State != State.Empty)
                             {
                                 WhichPlayersPiece(cell, i - 1, j - 1);
                                 if (IsItWhitesPiece == true)
                                 {
                                     Board._area[i - 1, j - 1].PossibleMove = true;
-                                    Board._area[i - 1, j - 1].IsOccupiedByBlack = true;
                                 }
                             }
-                            if (InsideBorder(i + 1, j + 1) == true && Board._area[i + 1, j + 1].State == State.Empty && Board._area[i + 1, j + 1].IsOccupiedByWhite == false)
+                            if (InsideBorder(i + 1, j + 1) == true && Board._area[i + 1, j + 1].State == State.Empty)
                             {
                                 Board._area[i + 1, j + 1].PossibleMove = true;
-                                Board._area[i + 1, j + 1].IsOccupiedByBlack = true;
                             }
-                            else if (InsideBorder(i + 1, j + 1) == true && Board._area[i + 1, j + 1].State != State.Empty && Board._area[i + 1, j + 1].IsOccupiedByWhite == false)
+                            else if (InsideBorder(i + 1, j + 1) == true && Board._area[i + 1, j + 1].State != State.Empty)
                             {
                                 WhichPlayersPiece(cell, i + 1, j + 1);
                                 if (IsItWhitesPiece == true)
                                 {
                                     Board._area[i + 1, j + 1].PossibleMove = true;
-                                    Board._area[i + 1, j + 1].IsOccupiedByBlack = true;
                                 }
                             }
-                            if (InsideBorder(i - 1, j + 1) == true && Board._area[i - 1, j + 1].State == State.Empty && Board._area[i - 1, j + 1].IsOccupiedByWhite == false)
+                            if (InsideBorder(i - 1, j + 1) == true && Board._area[i - 1, j + 1].State == State.Empty)
                             {
                                 Board._area[i - 1, j + 1].PossibleMove = true;
-                                Board._area[i - 1, j + 1].IsOccupiedByBlack = true;
                             }
-                            else if (InsideBorder(i - 1, j + 1) == true && Board._area[i - 1, j + 1].State != State.Empty && Board._area[i - 1, j + 1].IsOccupiedByWhite == false)
+                            else if (InsideBorder(i - 1, j + 1) == true && Board._area[i - 1, j + 1].State != State.Empty)
                             {
                                 WhichPlayersPiece(cell, i - 1, j + 1);
                                 if (IsItWhitesPiece == true)
                                 {
                                     Board._area[i - 1, j + 1].PossibleMove = true;
-                                    Board._area[i - 1, j + 1].IsOccupiedByBlack = true;
                                 }
                             }
-                            if (InsideBorder(i + 1, j - 1) == true && Board._area[i + 1, j - 1].State == State.Empty && Board._area[i + 1, j - 1].IsOccupiedByWhite == false)
+                            if (InsideBorder(i + 1, j - 1) == true && Board._area[i + 1, j - 1].State == State.Empty)
                             {
                                 Board._area[i + 1, j - 1].PossibleMove = true;
-                                Board._area[i + 1, j - 1].IsOccupiedByBlack = true;
                             }
-                            else if (InsideBorder(i + 1, j - 1) == true && Board._area[i + 1, j - 1].State != State.Empty && Board._area[i + 1, j - 1].IsOccupiedByWhite == false)
+                            else if (InsideBorder(i + 1, j - 1) == true && Board._area[i + 1, j - 1].State != State.Empty)
                             {
                                 WhichPlayersPiece(cell, i + 1, j - 1);
                                 if (IsItWhitesPiece == true)
                                 {
                                     Board._area[i + 1, j - 1].PossibleMove = true;
-                                    Board._area[i + 1, j - 1].IsOccupiedByBlack = true;
                                 }
                             }
                             if (Board._area[0, 4].State == State.BlackKing && Board._area[0, 7].State == State.BlackRook)
@@ -1327,35 +1382,11 @@ namespace ChessBoard
                                     if (Board._area[cell.RowNumber + 1, cell.ColumnNumber].State == State.Empty)
                                     {
                                         Board._area[cell.RowNumber + 1, cell.ColumnNumber].PossibleMove = true;
-                                        if (InsideBorder(cell.RowNumber + 1, cell.ColumnNumber + 1))
-                                        {
-                                            Board._area[cell.RowNumber + 1, cell.ColumnNumber + 1].IsOccupiedByBlack = true;
-                                        }
-                                        if (InsideBorder(cell.RowNumber + 1, cell.ColumnNumber - 1))
-                                        {
-                                            Board._area[cell.RowNumber + 1, cell.ColumnNumber - 1].IsOccupiedByBlack = true;
-                                        }
                                         if (Board._area[cell.RowNumber + 2, cell.ColumnNumber].State == State.Empty)
                                         {
                                             if (InsideBorder(cell.RowNumber + 2, cell.ColumnNumber))
                                             {
                                                 Board._area[cell.RowNumber + 2, cell.ColumnNumber].PossibleMove = true;
-                                                if (InsideBorder(cell.RowNumber + 2, cell.ColumnNumber - 1))
-                                                {
-                                                    Board._area[cell.RowNumber + 2, cell.ColumnNumber - 1].IsOccupiedByBlack = true;
-                                                }
-                                                if (InsideBorder(cell.RowNumber + 2, cell.ColumnNumber - 1))
-                                                {
-                                                    Board._area[cell.RowNumber + 2, cell.ColumnNumber - 1].IsOccupiedByBlack = true;
-                                                }
-                                            }
-                                            if (InsideBorder(cell.RowNumber + 1, cell.ColumnNumber + 1))
-                                            {
-                                                Board._area[cell.RowNumber + 1, cell.ColumnNumber + 1].IsOccupiedByBlack = false;
-                                            }
-                                            if (InsideBorder(cell.RowNumber + 1, cell.ColumnNumber - 1))
-                                            {
-                                                Board._area[cell.RowNumber + 1, cell.ColumnNumber - 1].IsOccupiedByBlack = false;
                                             }
                                         }
                                     }
@@ -1363,14 +1394,6 @@ namespace ChessBoard
                                 else if (InsideBorder(cell.RowNumber + 1, cell.ColumnNumber) == true && cell.RowNumber != 1 && Board._area[cell.RowNumber + 1, cell.ColumnNumber].State == State.Empty)
                                 {
                                     Board._area[cell.RowNumber + 1, cell.ColumnNumber].PossibleMove = true;
-                                    if (InsideBorder(cell.RowNumber + 1, cell.ColumnNumber - 1))
-                                    {
-                                        Board._area[cell.RowNumber + 1, cell.ColumnNumber - 1].IsOccupiedByBlack = true;
-                                    }
-                                    if (InsideBorder(cell.RowNumber + 1, cell.ColumnNumber + 1))
-                                    {
-                                        Board._area[cell.RowNumber + 1, cell.ColumnNumber + 1].IsOccupiedByBlack = true;
-                                    }
                                 }
                                 if (InsideBorder(cell.RowNumber + 1, cell.ColumnNumber - 1) == true)
                                 {
@@ -1378,7 +1401,6 @@ namespace ChessBoard
                                     if (IsItWhitesPiece == true && Board._area[cell.RowNumber + 1, cell.ColumnNumber - 1].State != State.Empty)
                                     {
                                         Board._area[cell.RowNumber + 1, cell.ColumnNumber - 1].PossibleMove = true;
-                                        Board._area[cell.RowNumber + 1, cell.ColumnNumber - 1].IsOccupiedByBlack = true;
                                     }
                                 }
                                 if (InsideBorder(cell.RowNumber + 1, cell.ColumnNumber + 1) == true)
@@ -1387,7 +1409,6 @@ namespace ChessBoard
                                     if (IsItWhitesPiece == true && Board._area[cell.RowNumber + 1, cell.ColumnNumber + 1].State != State.Empty)
                                     {
                                         Board._area[cell.RowNumber + 1, cell.ColumnNumber + 1].PossibleMove = true;
-                                        Board._area[cell.RowNumber + 1, cell.ColumnNumber + 1].IsOccupiedByBlack = true;
                                     }
                                 }
                             }
@@ -1404,7 +1425,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty)
                                         {
                                             Board._area[cell.RowNumber + 2, cell.ColumnNumber + 1].PossibleMove = true;
-                                            Board._area[cell.RowNumber + 2, cell.ColumnNumber + 1].IsOccupiedByBlack = true;
                                         }
                                         else
                                             Board._area[cell.RowNumber + 2, cell.ColumnNumber + 1].PossibleMove = false;
@@ -1416,7 +1436,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty)
                                         {
                                             Board._area[cell.RowNumber + 2, cell.ColumnNumber - 1].PossibleMove = true;
-                                            Board._area[cell.RowNumber + 2, cell.ColumnNumber - 1].IsOccupiedByBlack = true;
                                         }
                                         else
                                             Board._area[cell.RowNumber + 2, cell.ColumnNumber - 1].PossibleMove = false;
@@ -1428,7 +1447,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty)
                                         {
                                             Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].PossibleMove = true;
-                                            Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].IsOccupiedByBlack = true;
                                         }
                                         else
                                             Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].PossibleMove = false;
@@ -1440,7 +1458,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty)
                                         {
                                             Board._area[cell.RowNumber - 2, cell.ColumnNumber + 1].PossibleMove = true;
-                                            Board._area[cell.RowNumber - 2, cell.ColumnNumber + 1].IsOccupiedByBlack = true;
                                         }
                                         else
                                             Board._area[cell.RowNumber - 2, cell.ColumnNumber + 1].PossibleMove = false;
@@ -1452,7 +1469,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty)
                                         {
                                             Board._area[cell.RowNumber + 1, cell.ColumnNumber + 2].PossibleMove = true;
-                                            Board._area[cell.RowNumber + 1, cell.ColumnNumber + 2].IsOccupiedByBlack = true;
                                         }
                                         else
                                             Board._area[cell.RowNumber + 1, cell.ColumnNumber + 2].PossibleMove = false;
@@ -1464,7 +1480,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty)
                                         {
                                             Board._area[cell.RowNumber + 1, cell.ColumnNumber - 2].PossibleMove = true;
-                                            Board._area[cell.RowNumber + 1, cell.ColumnNumber - 2].IsOccupiedByBlack = true;
                                         }
                                         else
                                             Board._area[cell.RowNumber + 1, cell.ColumnNumber - 2].PossibleMove = false;
@@ -1476,7 +1491,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty)
                                         {
                                             Board._area[cell.RowNumber - 1, cell.ColumnNumber - 2].PossibleMove = true;
-                                            Board._area[cell.RowNumber - 1, cell.ColumnNumber - 2].IsOccupiedByBlack = true;
                                         }
                                         else
                                             Board._area[cell.RowNumber - 1, cell.ColumnNumber - 2].PossibleMove = false;
@@ -1488,7 +1502,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty)
                                         {
                                             Board._area[cell.RowNumber - 1, cell.ColumnNumber + 2].PossibleMove = true;
-                                            Board._area[cell.RowNumber - 1, cell.ColumnNumber + 2].IsOccupiedByBlack = true;
                                         }
                                         else
                                             Board._area[cell.RowNumber - 1, cell.ColumnNumber + 2].PossibleMove = false;
@@ -1509,7 +1522,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i != cell.RowNumber && j == cell.ColumnNumber)
                                         {
                                             Board._area[i, cell.ColumnNumber].PossibleMove = true;
-                                            Board._area[i, cell.ColumnNumber].IsOccupiedByBlack = true;
                                             if (Board._area[i, cell.ColumnNumber].State != State.Empty)
                                                 i = i - 8;
                                         }
@@ -1526,7 +1538,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i != cell.RowNumber && j == cell.ColumnNumber)
                                         {
                                             Board._area[i, cell.ColumnNumber].PossibleMove = true;
-                                            Board._area[i, cell.ColumnNumber].IsOccupiedByBlack = true;
                                             if (Board._area[i, cell.ColumnNumber].State != State.Empty)
                                                 i = i + 8;
                                         }
@@ -1543,7 +1554,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i == cell.RowNumber && j != cell.ColumnNumber)
                                         {
                                             Board._area[cell.RowNumber, j].PossibleMove = true;
-                                            Board._area[cell.RowNumber, j].IsOccupiedByBlack = true;
                                             if (Board._area[cell.RowNumber, j].State != State.Empty)
                                                 j = j - 8;
                                         }
@@ -1560,7 +1570,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i == cell.RowNumber && j != cell.ColumnNumber)
                                         {
                                             Board._area[cell.RowNumber, j].PossibleMove = true;
-                                            Board._area[cell.RowNumber, j].IsOccupiedByBlack = true;
                                             if (Board._area[cell.RowNumber, j].State != State.Empty)
                                                 j = j + 8;
                                         }
@@ -1586,7 +1595,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i != cell.RowNumber && j == cell.ColumnNumber)
                                         {
                                             Board._area[i, cell.ColumnNumber].PossibleMove = true;
-                                            Board._area[i, cell.ColumnNumber].IsOccupiedByBlack = true;
                                             if (Board._area[i, cell.ColumnNumber].State != State.Empty)
                                                 i = i - 8;
                                         }
@@ -1603,7 +1611,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i != cell.RowNumber && j == cell.ColumnNumber)
                                         {
                                             Board._area[i, cell.ColumnNumber].PossibleMove = true;
-                                            Board._area[i, cell.ColumnNumber].IsOccupiedByBlack = true;
                                             if (Board._area[i, cell.ColumnNumber].State != State.Empty)
                                                 i = i + 8;
                                         }
@@ -1620,7 +1627,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i == cell.RowNumber && j != cell.ColumnNumber)
                                         {
                                             Board._area[cell.RowNumber, j].PossibleMove = true;
-                                            Board._area[cell.RowNumber, j].IsOccupiedByBlack = true;
                                             if (Board._area[cell.RowNumber, j].State != State.Empty)
                                                 j = j - 8;
                                         }
@@ -1637,7 +1643,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i == cell.RowNumber && j != cell.ColumnNumber)
                                         {
                                             Board._area[cell.RowNumber, j].PossibleMove = true;
-                                            Board._area[cell.RowNumber, j].IsOccupiedByBlack = true;
                                             if (Board._area[cell.RowNumber, j].State != State.Empty)
                                                 j = j + 8;
                                         }
@@ -1654,7 +1659,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i != cell.RowNumber && j != cell.ColumnNumber)
                                         {
                                             Board._area[i, j].PossibleMove = true;
-                                            Board._area[i, j].IsOccupiedByBlack = true;
                                             if (Board._area[i, j].State != State.Empty)
                                             {
                                                 Board._area[i, j].PossibleMove = true;
@@ -1676,7 +1680,6 @@ namespace ChessBoard
                                         WhichPlayersPiece(cell, i, j);
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i != cell.RowNumber && j != cell.ColumnNumber)
                                         {
-                                            Board._area[i, j].IsOccupiedByBlack = true;
                                             Board._area[i, j].PossibleMove = true;
                                             if (Board._area[i, j].State != State.Empty)
                                             {
@@ -1700,7 +1703,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i != cell.RowNumber && j != cell.ColumnNumber)
                                         {
                                             Board._area[i, j].PossibleMove = true;
-                                            Board._area[i, j].IsOccupiedByBlack = true;
                                             if (Board._area[i, j].State != State.Empty)
                                             {
                                                 Board._area[i, j].PossibleMove = true;
@@ -1723,7 +1725,6 @@ namespace ChessBoard
                                         if (IsItWhitesPiece == true || cell.State == State.Empty && i != cell.RowNumber && j != cell.ColumnNumber)
                                         {
                                             Board._area[i, j].PossibleMove = true;
-                                            Board._area[i, j].IsOccupiedByBlack = true;
                                             if (Board._area[i, j].State != State.Empty)
                                             {
                                                 Board._area[i, j].PossibleMove = true;
@@ -1756,356 +1757,6 @@ namespace ChessBoard
                 for (j = 0; j < 8; j++)
                 {
                     Board._area[i, j].PossibleMove = false;
-                }
-            }
-        }
-        public void DeleteOccupiedSquares(Cell cell, int i, int j)
-        {
-            if (cell.State == State.WhiteKnight || cell.State == State.BlackKnight)
-            {
-                if (InsideBorder(cell.RowNumber + 2, cell.ColumnNumber + 1) == true)
-                {
-                    if (CurrentPlayer == 2)
-                        Board._area[cell.RowNumber + 2, cell.ColumnNumber + 1].IsOccupiedByWhite = false;
-                    else if (CurrentPlayer == 1)
-                        Board._area[cell.RowNumber + 2, cell.ColumnNumber + 1].IsOccupiedByBlack = false;
-                }
-
-                if (InsideBorder(cell.RowNumber + 2, cell.ColumnNumber - 1) == true)
-                {
-                    if (CurrentPlayer == 2)
-                        Board._area[cell.RowNumber + 2, cell.ColumnNumber + 1].IsOccupiedByWhite = false;
-                    else if (CurrentPlayer == 1)
-                        Board._area[cell.RowNumber + 2, cell.ColumnNumber - 1].IsOccupiedByBlack = false;
-                }
-
-                if (InsideBorder(cell.RowNumber - 2, cell.ColumnNumber - 1) == true)
-                {
-                    if (CurrentPlayer == 2)
-                        Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].IsOccupiedByWhite = false;
-                    else if (CurrentPlayer == 1)
-                        Board._area[cell.RowNumber - 2, cell.ColumnNumber - 1].IsOccupiedByBlack = false;
-                }
-
-                if (InsideBorder(cell.RowNumber - 2, cell.ColumnNumber + 1) == true)
-                {
-                    if (CurrentPlayer == 2)
-                        Board._area[cell.RowNumber - 2, cell.ColumnNumber + 1].IsOccupiedByWhite = false;
-                    else if (CurrentPlayer == 1)
-                        Board._area[cell.RowNumber - 2, cell.ColumnNumber + 1].IsOccupiedByBlack = false;
-                }
-
-                if (InsideBorder(cell.RowNumber + 1, cell.ColumnNumber + 2) == true)
-                {
-                    if (CurrentPlayer == 2)
-                        Board._area[cell.RowNumber + 1, cell.ColumnNumber + 2].IsOccupiedByWhite = false;
-                    else if (CurrentPlayer == 1)
-                        Board._area[cell.RowNumber + 1, cell.ColumnNumber + 2].IsOccupiedByBlack = false;
-                }
-
-                if (InsideBorder(cell.RowNumber + 1, cell.ColumnNumber - 2) == true)
-                {
-                    if (CurrentPlayer == 2)
-                        Board._area[cell.RowNumber + 1, cell.ColumnNumber - 2].IsOccupiedByWhite = false;
-                    else if (CurrentPlayer == 1)
-                        Board._area[cell.RowNumber + 1, cell.ColumnNumber - 2].IsOccupiedByBlack = false;
-                }
-
-                if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber - 2) == true)
-                {
-                    if (CurrentPlayer == 2)
-                        Board._area[cell.RowNumber - 1, cell.ColumnNumber - 2].IsOccupiedByWhite = false;
-                    else if (CurrentPlayer == 1)
-                        Board._area[cell.RowNumber - 1, cell.ColumnNumber - 2].IsOccupiedByBlack = false;
-                }
-
-                if (InsideBorder(cell.RowNumber - 1, cell.ColumnNumber + 2) == true)
-                {
-                    if (CurrentPlayer == 2)
-                        Board._area[cell.RowNumber - 1, cell.ColumnNumber + 2].IsOccupiedByWhite = false;
-                    else if (CurrentPlayer == 1)
-                        Board._area[cell.RowNumber - 1, cell.ColumnNumber + 2].IsOccupiedByBlack = false;
-                }
-            }
-            else if (cell.State == State.WhiteBishop || cell.State == State.BlackBishop)
-            {
-                if (InsideBorder(cell.RowNumber, cell.ColumnNumber) == true)
-                {
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; i >= 0 && j < 8 && InsideBorder(i, j) == true; i--, j++)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByBlack = false;
-                    }
-
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; i >= 0 && j >= 0 && InsideBorder(i, j); i--, j--)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByBlack = false;
-                    }
-
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; i < 8 && j < 8 && InsideBorder(i, j) == true; i++, j++)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByBlack = false;
-                    }
-
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; i < 8 && j >= 0 && InsideBorder(i, j) == true; i++, j--)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByBlack = false;
-                    }
-                }
-            }
-            else if (cell.State == State.WhitePawn || cell.State == State.BlackPawn)
-            {
-                if (InsideBorder(i, j) == true)
-                {
-                    if (CurrentPlayer == 1)
-                    {
-                        if (InsideBorder(i, j - 1) == true)
-                        {
-                            Board._area[i, j - 1].IsOccupiedByWhite = false;
-                        }
-                        if (InsideBorder(i, j + 1))
-                        {
-                            Board._area[i, j + 1].IsOccupiedByWhite = false;
-                        }
-                    }
-                    else if (CurrentPlayer == 2)
-                    {
-                        if (InsideBorder(i, j - 1) == true)
-                        {
-                            Board._area[i, j - 1].IsOccupiedByBlack = false;
-                        }
-                        if (InsideBorder(i, j + 1))
-                        {
-                            Board._area[i, j + 1].IsOccupiedByBlack = false;
-                        }
-                    }
-                }
-            }
-            else if (cell.State == State.WhiteRook || cell.State == State.BlackRook)
-            {
-                if (InsideBorder(cell.RowNumber, cell.ColumnNumber) == true)
-                {
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; i >= 0 && InsideBorder(i, cell.ColumnNumber); i--)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 2)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByBlack = false;
-                    }
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; i < 8 && InsideBorder(i, cell.ColumnNumber); i++)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 2)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByBlack = false;
-                    }
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; j >= 0 && InsideBorder(cell.RowNumber, j); j--)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 2)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByBlack = false;
-                    }
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; j < 8 && InsideBorder(cell.RowNumber, j); j++)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 2)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByBlack = false;
-                    }
-                }
-            }
-            else if (cell.State == State.WhiteQueen || cell.State == State.BlackQueen)
-            {
-                if (InsideBorder(cell.RowNumber, cell.ColumnNumber) == true)
-                {
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; i >= 0 && j < 8 && InsideBorder(i, j) == true; i--, j++)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByBlack = false;
-                    }
-
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; i >= 0 && j >= 0 && InsideBorder(i, j); i--, j--)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByBlack = false;
-                    }
-
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; i < 8 && j < 8 && InsideBorder(i, j) == true; i++, j++)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByBlack = false;
-                    }
-
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; i < 8 && j >= 0 && InsideBorder(i, j) == true; i++, j--)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 1)
-                            Board._area[i, j].IsOccupiedByBlack = false;
-                    }
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; i >= 0 && InsideBorder(i, cell.ColumnNumber); i--)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 2)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByBlack = false;
-                    }
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; i < 8 && InsideBorder(i, cell.ColumnNumber); i++)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 2)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByBlack = false;
-                    }
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; j >= 0 && InsideBorder(cell.RowNumber, j); j--)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 2)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByBlack = false;
-                    }
-                    i = cell.RowNumber;
-                    j = cell.ColumnNumber;
-                    for (; j < 8 && InsideBorder(cell.RowNumber, j); j++)
-                    {
-                        if (CurrentPlayer == 1)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByWhite = false;
-                        else if (CurrentPlayer == 2)
-                            Board._area[i, cell.ColumnNumber].IsOccupiedByBlack = false;
-                    }
-                }
-            }
-            else if (cell.State == State.WhiteKing || cell.State == State.BlackKing)
-            {
-                i = cell.RowNumber;
-                j = cell.ColumnNumber;
-                if (InsideBorder(i - 1, j) == true)
-                {
-                    Board._area[i - 1, j].IsOccupiedByBlack = false;
-                }
-                else if (InsideBorder(i - 1, j) == true)
-                {
-                    Board._area[i - 1, j].IsOccupiedByBlack = false;
-                }
-                if (InsideBorder(i + 1, j) == true)
-                {
-                    Board._area[i + 1, j].IsOccupiedByBlack = false;
-                }
-                else if (InsideBorder(i + 1, j) == true)
-                {
-                    Board._area[i + 1, j].IsOccupiedByBlack = false;
-                }
-                if (InsideBorder(i, j - 1) == true)
-                {
-                    Board._area[i, j - 1].IsOccupiedByBlack = false;
-                }
-                else if (InsideBorder(i, j - 1) == true)
-                {
-                    Board._area[i, j - 1].IsOccupiedByBlack = false;
-                }
-                if (InsideBorder(i, j + 1) == true)
-                {
-                    Board._area[i, j + 1].IsOccupiedByBlack = false;
-                }
-                else if (InsideBorder(i, j + 1) == true)
-                {
-                    Board._area[i, j + 1].IsOccupiedByBlack = false;
-                }
-                if (InsideBorder(i - 1, j - 1) == true)
-                {
-                    Board._area[i - 1, j - 1].IsOccupiedByBlack = false;
-                }
-                else if (InsideBorder(i - 1, j - 1) == true)
-                {
-                    Board._area[i - 1, j - 1].IsOccupiedByBlack = false;
-                }
-                if (InsideBorder(i + 1, j + 1) == true)
-                {
-                    Board._area[i + 1, j + 1].IsOccupiedByBlack = false;
-                }
-                else if (InsideBorder(i + 1, j + 1) == true)
-                {
-                    if (CurrentPlayer == 1)
-                        Board._area[i + 1, j + 1].IsOccupiedByWhite = false;
-                    else if (CurrentPlayer == 2)
-                        Board._area[i + 1, j + 1].IsOccupiedByBlack = false;
-                }
-                if (InsideBorder(i - 1, j + 1) == true)
-                {
-                    if (CurrentPlayer == 1)
-                        Board._area[i - 1, j + 1].IsOccupiedByWhite = false;
-                    else if (CurrentPlayer == 2)
-                        Board._area[i - 1, j + 1].IsOccupiedByBlack = false;
-                }
-                else if (InsideBorder(i - 1, j + 1) == true)
-                {
-                    if (CurrentPlayer == 1)
-                        Board._area[i + 1, j + 1].IsOccupiedByWhite = false;
-                    else if (CurrentPlayer == 2)
-                        Board._area[i - 1, j + 1].IsOccupiedByBlack = false;
-
-                }
-                if (InsideBorder(i + 1, j - 1) == true)
-                {
-                    if (CurrentPlayer == 1)
-                        Board._area[i + 1, j - 1].IsOccupiedByWhite = false;
-                    else if (CurrentPlayer == 2)
-                        Board._area[i + 1, j - 1].IsOccupiedByBlack = false;
-                }
-                else if (InsideBorder(i + 1, j - 1) == true)
-                {
-                    if (CurrentPlayer == 1)
-                        Board._area[i + 1, j - 1].IsOccupiedByWhite = false;
-                    else if (CurrentPlayer == 2)
-                        Board._area[i + 1, j - 1].IsOccupiedByBlack = false;
                 }
             }
         }

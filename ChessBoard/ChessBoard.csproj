@@ -32,6 +32,16 @@
     <None Remove="Resources\Flag_of_South_Korea.png" />
     <None Remove="Resources\Flag_of_the_United_Kingdom.png" />
     <None Remove="Resources\IntermediateTheory\1.PNG" />
+    <None Remove="Resources\Players\AlirezaFirouzja.jpeg" />
+    <None Remove="Resources\Players\AnandVishy.jpg" />
+    <None Remove="Resources\Players\AnishGiri.jpg" />
+    <None Remove="Resources\Players\DingLiren.jpeg" />
+    <None Remove="Resources\Players\FabianoCaruana.jpg" />
+    <None Remove="Resources\Players\HikaruNakamura.jpg" />
+    <None Remove="Resources\Players\MagnusCarlsen.jpg" />
+    <None Remove="Resources\Players\Nepo.jpg" />
+    <None Remove="Resources\Players\TeimourRadjabov.jpg" />
+    <None Remove="Resources\Players\WesleySo.jpg" />
     <None Remove="Resources\Queen1.png" />
   </ItemGroup>
 
@@ -67,6 +77,16 @@
     <Resource Include="Resources\Flag_of_South_Korea.png" />
     <Resource Include="Resources\Flag_of_the_United_Kingdom.png" />
     <Resource Include="Resources\IntermediateTheory\1.PNG" />
+    <Resource Include="Resources\Players\AlirezaFirouzja.jpeg" />
+    <Resource Include="Resources\Players\AnandVishy.jpg" />
+    <Resource Include="Resources\Players\AnishGiri.jpg" />
+    <Resource Include="Resources\Players\DingLiren.jpeg" />
+    <Resource Include="Resources\Players\FabianoCaruana.jpg" />
+    <Resource Include="Resources\Players\HikaruNakamura.jpg" />
+    <Resource Include="Resources\Players\MagnusCarlsen.jpg" />
+    <Resource Include="Resources\Players\Nepo.jpg" />
+    <Resource Include="Resources\Players\TeimourRadjabov.jpg" />
+    <Resource Include="Resources\Players\WesleySo.jpg" />
     <Resource Include="Resources\Queen1.png" />
   </ItemGroup>
 

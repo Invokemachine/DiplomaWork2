@@ -6,7 +6,7 @@
         xmlns:controls="clr-namespace:ChessBoard.Controls"
         xmlns:local="clr-namespace:ChessBoard"
         mc:Ignorable="d"
-        Title="WPF Window" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize"
+        Title="WPF Window" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" Width="550"
         d:DataContext="{d:DesignInstance local:MainViewModel, IsDesignTimeCreatable=True}"
         SnapsToDevicePixels="True">
     <Window.Resources>
@@ -27,8 +27,9 @@
         <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="-5,0">
             <Button Content="Previous" x:Name="PreviousButton" Margin="5" Width="100" Padding="10,5" Height="30" FontSize="15" Command="{Binding PuzzlePrevious}"/>
             <Button Content="Next" x:Name="NextButton" Margin="5" Padding="10,5" Width="100" Height="30" FontSize="15" Command ="{Binding PuzzleNext}"/>
-            <Button Content="Check" x:Name="CheckButton" Margin="5" Padding="10,5" Width="100" Height="30" FontSize="15" Command ="{Binding PuzzlePCheck}"/>
+            <Button Content="Check" x:Name="CheckButton" Margin="5" Padding="10,5" Width="100" Height="30" FontSize="15" Command ="{Binding PuzzlePCheck}" />
             <Button Content="⏎" x:Name="BackButton" Width="40" Height="30" VerticalContentAlignment="Center" HorizontalAlignment="Right" Click="BackButton_Click"/>
+            <ComboBox Width="80" Text="#" Height="30"/>
         </StackPanel>
         <ItemsControl Grid.Row="2" ItemsSource="{Binding Numbers}" Width="21">
             <ItemsControl.ItemTemplate>

@@ -24,13 +24,13 @@ namespace ChessBoard
         {
             InitializeComponent();
             DataContext = new MainViewModel();
-            SetupBoard();
             TranslateMethod();
+
         }
 
         private void TranslateMethod()
         {
-            if(MainViewModel.CurrentLanguage == "English")
+            if (MainViewModel.CurrentLanguage == "English")
             {
                 PreviousButton.Content = "Previous";
                 NextButton.Content = "Next";
@@ -51,32 +51,6 @@ namespace ChessBoard
                 CheckButton.Content = "확인";
                 CheckButton.FontSize = 16;
             }
-        }
-
-        private void SetupBoard()
-        {
-            Board board = new();
-            board[0, 0] = State.BlackRook;
-            board[0, 1] = State.BlackKnight;
-            board[0, 2] = State.BlackBishop;
-            board[0, 3] = State.BlackQueen;
-            board[0, 4] = State.BlackKing;
-            board[0, 5] = State.BlackBishop;
-            board[0, 6] = State.BlackKnight;
-            board[0, 7] = State.BlackRook;
-            for (int i = 0; i < 8; i++)
-            {
-                board[1, i] = State.BlackPawn;
-                board[6, i] = State.WhitePawn;
-            }
-            board[7, 0] = State.WhiteRook;
-            board[7, 1] = State.WhiteKnight;
-            board[7, 2] = State.WhiteBishop;
-            board[7, 3] = State.WhiteQueen;
-            board[7, 4] = State.WhiteKing;
-            board[7, 5] = State.WhiteBishop;
-            board[7, 6] = State.WhiteKnight;
-            board[3, 3] = State.WhiteRook;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
