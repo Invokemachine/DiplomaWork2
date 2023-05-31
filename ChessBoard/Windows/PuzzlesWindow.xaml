@@ -29,7 +29,8 @@
             <Button Content="Next" x:Name="NextButton" Margin="5" Padding="10,5" Width="100" Height="30" FontSize="15" Command ="{Binding PuzzleNext}"/>
             <Button Content="Check" x:Name="CheckButton" Margin="5" Padding="10,5" Width="100" Height="30" FontSize="15" Command ="{Binding PuzzlePCheck}" />
             <Button Content="⏎" x:Name="BackButton" Width="40" Height="30" VerticalContentAlignment="Center" HorizontalAlignment="Right" Click="BackButton_Click"/>
-            <ComboBox Width="80" Text="#" Height="30"/>
+            <ComboBox x:Name="PuzzlesComboBox" Width="60" Text="#" Height="30" SelectionChanged="PuzzlesComboBox_SelectionChanged"/>
+            <Button Content="✔" x:Name="AcceptButton" Width="40" Height="30" VerticalContentAlignment="Center" HorizontalAlignment="Right" Command ="{Binding SelectedPuzzleShow}" FontSize="16"/>
         </StackPanel>
         <ItemsControl Grid.Row="2" ItemsSource="{Binding Numbers}" Width="21">
             <ItemsControl.ItemTemplate>
@@ -54,7 +55,7 @@
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
         </ItemsControl>
-        <ItemsControl Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Board}" AlternationCount="64">
+        <ItemsControl x:Name="PuzzleBoard" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Board}" AlternationCount="64">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Button Width="60" Height="60" Command="{Binding DataContext.CellCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding}" >
@@ -69,7 +70,7 @@
                                         <ControlTemplate>
                                             <Border Background="{TemplateBinding Background}" >
                                                 <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
-                                                    <controls:ChessPiece Piece="{Binding State}" />
+                                                    <controls:ChessPiece Piece="{Binding State}"/>
                                                 </Border>
                                             </Border>
                                         </ControlTemplate>

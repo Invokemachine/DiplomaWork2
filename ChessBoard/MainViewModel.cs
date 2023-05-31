@@ -18,15 +18,16 @@ namespace ChessBoard
     {
 
         public static PlayWindow playWindow;
-        public Board _board = new();
+        public static Board _board = new();
         private ICommand _newGameCommand;
         private ICommand _clearCommand;
         private ICommand _cellCommand;
         private ICommand _puzzlenext;
         private ICommand _puzzleprevious;
         private ICommand _puzzlecheck;
-        int CurrentPuzzleNumber = 1;
-        string CurrentPuzzleName = "";
+        private ICommand _selectedpuzzleshow;
+        public int CurrentPuzzleNumber = 1;
+        public string CurrentPuzzleName = "";
         public string WhiteCastledQueenSide = "false";
         public string WhiteCastledKingSide = "false";
         public string BlackCastledQueenSide = "false";
@@ -97,7 +98,134 @@ namespace ChessBoard
                 else
                     MessageBox.Show("Неверно!");
             }
+            if (CurrentPuzzleName == "PuzzleBeginner6")
+            {
+                if (Board._area[0, 7].State == State.WhitePawn && Board._area[1, 6].State == State.WhitePawn)
+                {
+                    MessageBox.Show("Верно!");
+                }
+                else
+                    MessageBox.Show("Неверно!");
+            }
         });
+        public ICommand SelectedPuzzleShow => _selectedpuzzleshow ??= new RelayCommand(parameter =>
+        {
+            PuzzlesShow();
+        });
+
+        public void PuzzlesShow()
+        {
+            if (CurrentPuzzleNumber == 0)
+                CurrentPuzzleNumber = 1;
+            else if (CurrentPuzzleNumber == 1)
+            {
+                CurrentPuzzleName = "PuzzleBeginner1";
+                CurrentPlayer = 2;
+                Board board = new();
+                board[0, 0] = State.WhiteKing;
+                board[1, 0] = State.WhitePawn;
+                board[2, 0] = State.WhitePawn;
+                board[5, 3] = State.WhiteKnight;
+                board[1, 2] = State.BlackKing;
+                board[1, 3] = State.BlackRook;
+                Board = board;
+                PuzzlePlayerChanged();
+            }
+            else if (CurrentPuzzleNumber == 2)
+            {
+                CurrentPuzzleName = "PuzzleBeginner2";
+                CurrentPlayer = 1;
+                Board board = new();
+                board[1, 1] = State.WhiteRook;
+                board[0, 5] = State.WhiteKing;
+                board[0, 7] = State.BlackKing;
+                board[7, 2] = State.BlackQueen;
+                board[3, 4] = State.WhiteKnight;
+                board[4, 4] = State.BlackPawn;
+                Board = board;
+                PuzzlePlayerChanged();
+            }
+            else if (CurrentPuzzleNumber == 3)
+            {
+                CurrentPuzzleName = "PuzzleBeginner3";
+                CurrentPlayer = 1;
+                Board board = new();
+                board[0, 7] = State.BlackQueen;
+                board[7, 5] = State.WhiteKing;
+                board[7, 4] = State.WhiteQueen;
+                board[7, 3] = State.WhiteRook;
+                board[7, 2] = State.WhiteBishop;
+                board[5, 3] = State.BlackPawn;
+                board[4, 3] = State.BlackKing;
+                Board = board;
+                PuzzlePlayerChanged();
+            }
+            else if (CurrentPuzzleNumber == 4)
+            {
+                CurrentPuzzleName = "PuzzleBeginner4";
+                CurrentPlayer = 1;
+                Board board = new();
+                board[0, 0] = State.BlackRook;
+                board[2, 2] = State.BlackKnight;
+                board[0, 2] = State.BlackBishop;
+                board[0, 3] = State.BlackQueen;
+                board[0, 4] = State.BlackKing;
+                board[0, 6] = State.BlackKnight;
+                board[0, 7] = State.BlackRook;
+                for (int i = 0; i < 8; i++)
+                {
+                    board[1, i] = State.BlackPawn;
+                    board[6, i] = State.WhitePawn;
+                }
+                board[1, 6] = State.BlackBishop;
+                board[2, 3] = State.Empty;
+                board[6, 4] = State.Empty;
+                board[1, 0] = State.Empty;
+                board[2, 6] = State.BlackPawn;
+                board[2, 0] = State.BlackPawn;
+                board[3, 4] = State.BlackPawn;
+                board[4, 4] = State.WhitePawn;
+                board[7, 0] = State.WhiteRook;
+                board[7, 1] = State.WhiteKnight;
+                board[7, 2] = State.WhiteBishop;
+                board[5, 5] = State.WhiteQueen;
+                board[7, 4] = State.WhiteKing;
+                board[4, 2] = State.WhiteBishop;
+                board[6, 4] = State.WhiteKnight;
+                board[7, 7] = State.WhiteRook;
+                Board = board;
+                PuzzlePlayerChanged();
+            }
+            else if (CurrentPuzzleNumber == 5)
+            {
+                CurrentPuzzleName = "PuzzleBeginner5";
+                CurrentPlayer = 1;
+                Board board = new();
+                board[0, 0] = State.BlackRook;
+                board[2, 2] = State.BlackKnight;
+                board[3, 2] = State.BlackBishop;
+                board[1, 6] = State.WhitePawn;
+                board[1, 7] = State.WhitePawn;
+                board[4, 1] = State.BlackPawn;
+                board[5, 2] = State.WhiteKing;
+                board[3, 5] = State.BlackKing;
+                Board = board;
+                PuzzlePlayerChanged();
+            }
+            else if (CurrentPuzzleNumber == 6)
+            {
+                CurrentPuzzleName = "PuzzleBeginner6";
+                CurrentPlayer = 2;
+                Board board = new();
+                board[6, 1] = State.BlackRook;
+                board[0, 7] = State.BlackRook;
+                board[3, 2] = State.BlackBishop;
+                board[3, 6] = State.WhiteKing;
+                board[7, 5] = State.BlackKing;
+                Board = board;
+                PuzzlePlayerChanged();
+            }
+        }
 
         private void PuzzlePlayerChanged()
         {
@@ -131,31 +259,16 @@ namespace ChessBoard
             else if (CurrentPuzzleNumber == 1)
             {
                 CurrentPlayer = 1;
-                CurrentPuzzleName = "PuzzleBeginner3";
-                Board board = new();
-                board[0, 7] = State.BlackQueen;
-                board[7, 5] = State.WhiteKing;
-                board[7, 4] = State.WhiteQueen;
-                board[7, 3] = State.WhiteRook;
-                board[7, 2] = State.WhiteBishop;
-                board[5, 3] = State.BlackPawn;
-                board[4, 3] = State.BlackKing;
-                Board = board;
-                CurrentPuzzleNumber = 5;
+                CurrentPuzzleName = "PuzzleBeginner6";
+                PuzzlesShow();
+                CurrentPuzzleNumber = 6;
                 PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 2)
             {
                 CurrentPuzzleName = "PuzzleBeginner1";
                 CurrentPlayer = 2;
-                Board board = new();
-                board[0, 0] = State.WhiteKing;
-                board[1, 0] = State.WhitePawn;
-                board[2, 0] = State.WhitePawn;
-                board[5, 3] = State.WhiteKnight;
-                board[1, 2] = State.BlackKing;
-                board[1, 3] = State.BlackRook;
-                Board = board;
+                PuzzlesShow();
                 CurrentPuzzleNumber--;
                 PuzzlePlayerChanged();
             }
@@ -163,14 +276,7 @@ namespace ChessBoard
             {
                 CurrentPlayer = 1;
                 CurrentPuzzleName = "PuzzleBeginner2";
-                Board board = new();
-                board[1, 1] = State.WhiteRook;
-                board[0, 5] = State.WhiteKing;
-                board[0, 7] = State.BlackKing;
-                board[7, 2] = State.BlackQueen;
-                board[3, 4] = State.WhiteKnight;
-                board[4, 4] = State.BlackPawn;
-                Board = board;
+                PuzzlesShow();
                 CurrentPuzzleNumber--;
                 PuzzlePlayerChanged();
             }
@@ -178,36 +284,7 @@ namespace ChessBoard
             {
                 CurrentPuzzleName = "PuzzleBeginner4";
                 CurrentPlayer = 1;
-                Board board = new();
-                board[0, 0] = State.BlackRook;
-                board[2, 2] = State.BlackKnight;
-                board[0, 2] = State.BlackBishop;
-                board[0, 3] = State.BlackQueen;
-                board[0, 4] = State.BlackKing;
-                board[0, 6] = State.BlackKnight;
-                board[0, 7] = State.BlackRook;
-                for (int i = 0; i < 8; i++)
-                {
-                    board[1, i] = State.BlackPawn;
-                    board[6, i] = State.WhitePawn;
-                }
-                board[1, 6] = State.BlackBishop;
-                board[2, 3] = State.Empty;
-                board[6, 4] = State.Empty;
-                board[1, 0] = State.Empty;
-                board[2, 6] = State.BlackPawn;
-                board[2, 0] = State.BlackPawn;
-                board[3, 4] = State.BlackPawn;
-                board[4, 4] = State.WhitePawn;
-                board[7, 0] = State.WhiteRook;
-                board[7, 1] = State.WhiteKnight;
-                board[7, 2] = State.WhiteBishop;
-                board[5, 5] = State.WhiteQueen;
-                board[7, 4] = State.WhiteKing;
-                board[4, 2] = State.WhiteBishop;
-                board[6, 4] = State.WhiteKnight;
-                board[7, 7] = State.WhiteRook;
-                Board = board;
+                PuzzlesShow();
                 CurrentPuzzleNumber--;
                 PuzzlePlayerChanged();
             }
@@ -215,16 +292,15 @@ namespace ChessBoard
             {
                 CurrentPuzzleName = "PuzzleBeginner5";
                 CurrentPlayer = 1;
-                Board board = new();
-                board[0, 0] = State.BlackRook;
-                board[2, 2] = State.BlackKnight;
-                board[3, 2] = State.BlackBishop;
-                board[1, 6] = State.WhitePawn;
-                board[1, 7] = State.WhitePawn;
-                board[4, 1] = State.BlackPawn;
-                board[5, 2] = State.WhiteKing;
-                board[3, 5] = State.BlackKing;
-                Board = board;
+                PuzzlesShow();
+                CurrentPuzzleNumber--;
+                PuzzlePlayerChanged();
+            }
+            else if (CurrentPuzzleNumber == 6)
+            {
+                CurrentPuzzleName = "PuzzleBeginner6";
+                CurrentPlayer = 2;
+                PuzzlesShow();
                 CurrentPuzzleNumber--;
                 PuzzlePlayerChanged();
             }
@@ -237,14 +313,7 @@ namespace ChessBoard
             {
                 CurrentPuzzleName = "PuzzleBeginner1";
                 CurrentPlayer = 2;
-                Board board = new();
-                board[0, 0] = State.WhiteKing;
-                board[1, 0] = State.WhitePawn;
-                board[2, 0] = State.WhitePawn;
-                board[5, 3] = State.WhiteKnight;
-                board[1, 2] = State.BlackKing;
-                board[1, 3] = State.BlackRook;
-                Board = board;
+                PuzzlesShow();
                 CurrentPuzzleNumber++;
                 PuzzlePlayerChanged();
             }
@@ -252,14 +321,7 @@ namespace ChessBoard
             {
                 CurrentPuzzleName = "PuzzleBeginner2";
                 CurrentPlayer = 1;
-                Board board = new();
-                board[1, 1] = State.WhiteRook;
-                board[0, 5] = State.WhiteKing;
-                board[0, 7] = State.BlackKing;
-                board[7, 2] = State.BlackQueen;
-                board[3, 4] = State.WhiteKnight;
-                board[4, 4] = State.BlackPawn;
-                Board = board;
+                PuzzlesShow();
                 CurrentPuzzleNumber++;
                 PuzzlePlayerChanged();
             }
@@ -267,15 +329,7 @@ namespace ChessBoard
             {
                 CurrentPuzzleName = "PuzzleBeginner3";
                 CurrentPlayer = 1;
-                Board board = new();
-                board[0, 7] = State.BlackQueen;
-                board[7, 5] = State.WhiteKing;
-                board[7, 4] = State.WhiteQueen;
-                board[7, 3] = State.WhiteRook;
-                board[7, 2] = State.WhiteBishop;
-                board[5, 3] = State.BlackPawn;
-                board[4, 3] = State.BlackKing;
-                Board = board;
+                PuzzlesShow();
                 CurrentPuzzleNumber++;
                 PuzzlePlayerChanged();
             }
@@ -283,36 +337,7 @@ namespace ChessBoard
             {
                 CurrentPuzzleName = "PuzzleBeginner4";
                 CurrentPlayer = 1;
-                Board board = new();
-                board[0, 0] = State.BlackRook;
-                board[2, 2] = State.BlackKnight;
-                board[0, 2] = State.BlackBishop;
-                board[0, 3] = State.BlackQueen;
-                board[0, 4] = State.BlackKing;
-                board[0, 6] = State.BlackKnight;
-                board[0, 7] = State.BlackRook;
-                for (int i = 0; i < 8; i++)
-                {
-                    board[1, i] = State.BlackPawn;
-                    board[6, i] = State.WhitePawn;
-                }
-                board[1, 6] = State.BlackBishop;
-                board[2, 3] = State.Empty;
-                board[6, 4] = State.Empty;
-                board[1, 0] = State.Empty;
-                board[2, 6] = State.BlackPawn;
-                board[2, 0] = State.BlackPawn;
-                board[3, 4] = State.BlackPawn;
-                board[4, 4] = State.WhitePawn;
-                board[7, 0] = State.WhiteRook;
-                board[7, 1] = State.WhiteKnight;
-                board[7, 2] = State.WhiteBishop;
-                board[5, 5] = State.WhiteQueen;
-                board[7, 4] = State.WhiteKing;
-                board[4, 2] = State.WhiteBishop;
-                board[6, 4] = State.WhiteKnight;
-                board[7, 7] = State.WhiteRook;
-                Board = board;
+                PuzzlesShow();
                 CurrentPuzzleNumber++;
                 PuzzlePlayerChanged();
             }
@@ -320,17 +345,16 @@ namespace ChessBoard
             {
                 CurrentPuzzleName = "PuzzleBeginner5";
                 CurrentPlayer = 1;
-                Board board = new();
-                board[0, 0] = State.BlackRook;
-                board[2, 2] = State.BlackKnight;
-                board[3, 2] = State.BlackBishop;
-                board[1, 6] = State.WhitePawn;
-                board[1, 7] = State.WhitePawn;
-                board[4, 1] = State.BlackPawn;
-                board[5, 2] = State.WhiteKing;
-                board[3, 5] = State.BlackKing;
-                Board = board;
-                CurrentPuzzleNumber = 1;
+                PuzzlesShow();
+                CurrentPuzzleNumber++;
+                PuzzlePlayerChanged();
+            }
+            else if (CurrentPuzzleNumber == 6)
+            {
+                CurrentPuzzleName = "PuzzleBeginner6";
+                CurrentPlayer = 2;
+                PuzzlesShow();
+                CurrentPuzzleNumber =1;
                 PuzzlePlayerChanged();
             }
         });

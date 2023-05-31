@@ -25,7 +25,10 @@ namespace ChessBoard
             InitializeComponent();
             DataContext = new MainViewModel();
             TranslateMethod();
-
+            PuzzlesComboBox.ItemsSource = new List<string>()
+            {
+                "1","2","3", "4", "5", "6"
+            };
         }
 
         private void TranslateMethod()
@@ -58,6 +61,50 @@ namespace ChessBoard
             MainWindow mainWindow = new();
             mainWindow.Show();
             Close();
+        }
+
+        private void PuzzlesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MainViewModel mainViewModel = new MainViewModel();
+            switch (PuzzlesComboBox.SelectedIndex)
+            {
+                case 0:
+                    {
+                        mainViewModel.CurrentPuzzleNumber = 1;
+                        mainViewModel.CurrentPuzzleName = "PuzzleBeginner1";
+                        break;
+                    }
+                case 1:
+                    {
+                        mainViewModel.CurrentPuzzleNumber = 2;
+                        mainViewModel.CurrentPuzzleName = "PuzzleBeginner2";
+                        break;
+                    }
+                case 2:
+                    {
+                        mainViewModel.CurrentPuzzleNumber = 3;
+                        mainViewModel.CurrentPuzzleName = "PuzzleBeginner3";
+                        break;
+                    }
+                case 3:
+                    {
+                        mainViewModel.CurrentPuzzleNumber = 4;
+                        mainViewModel.CurrentPuzzleName = "PuzzleBeginner4";
+                        break;
+                    }
+                case 4:
+                    {
+                        mainViewModel.CurrentPuzzleNumber = 5;
+                        mainViewModel.CurrentPuzzleName = "PuzzleBeginner5";
+                        break;
+                    }
+                case 5:
+                    {
+                        mainViewModel.CurrentPuzzleNumber = 6;
+                        mainViewModel.CurrentPuzzleName = "PuzzleBeginner6";
+                        break;
+                    }
+            }
         }
     }
 }
