@@ -47,6 +47,7 @@ namespace ChessBoard.Windows
                 TextBlock8.Text = "If your king and rook have never moved in game, you can use the rule of castling the king to hide him in the more safe side of the board. Castling moves the rook next to the kings home square and moves the king next to the rook on side which was chosen for casting.";
                 Title7.Content = "Capturing";
                 TextBlock9.Text = "Pieces can capture each other during the game, for any piece except the pawn capturing is allowed when the opponent's piece is placed at one of the possible squares for moving the chosen piece. Pawns can capture other pieces only when they are placed diagonally in front.";
+                Title = "The rules of chess";
             }
             else if (MainViewModel.CurrentLanguage == "Russian")
             {
@@ -67,6 +68,7 @@ namespace ChessBoard.Windows
                 TextBlock8.Text = "Если ваш король и ладья ни разу не двинулись за игру, вы можете использовать правило рокировки, чтобы спрятать короля в более безопасной части доски. Рокировка ставит ладью рядом с королём и переносит короля в сторону, ладья с которой была выбрана для рокировки.";
                 Title7.Content = "Съедение фигур";
                 TextBlock9.Text = "Фигуры могут 'съедать' друг друга в течение игры. Для всех фигур, кроме пешек, вражеская фигура становится доступной для съедения в случае, если она стоит на пути возможных ходов. Для пешек доступно съедение фигур только по диагонали на 1 поле перед ними.";
+                Title = "Правила шахмат";
             }
             else if (MainViewModel.CurrentLanguage == "Korean")
             {
@@ -87,6 +89,7 @@ namespace ChessBoard.Windows
                 TextBlock8.Text = "킹과 루크가 게임에서 한 번도 움직이지 않은 경우 킹을 캐슬링하는 규칙을 사용하여 보드의 더 안전한 쪽에 숨길 수 있습니다. 캐슬링은 킹의 홈 스퀘어 옆에 있는 루크를 이동시키고 캐스팅을 위해 선택된 루크 옆에 있는 킹을 이동시킵니다.";
                 Title7.Content = "캡처링";
                 TextBlock9.Text = "상대방의 조각이 선택한 조각을 이동하기 위해 가능한 사각형 중 하나에 배치될 때 폰 캡처가 허용되는 것을 제외한 모든 조각에 대해 조각은 게임 중에 서로를 캡처할 수 있습니다. 폰은 앞에 대각선으로 배치된 경우에만 다른 기물을 잡을 수 있습니다.";
+                Title = "체스의 규칙";
             }
         }
 

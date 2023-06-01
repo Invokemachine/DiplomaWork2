@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessBoard"
         mc:Ignorable="d"
-        Title="AboutCreator" Height="700" Width="520">
+        Title="Creators" Height="700" Width="520" MaxHeight="1000" MaxWidth="700" MinHeight="400" MinWidth="350">
     <Grid Background="#EFE0E0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="0" Margin="10" Grid.Column="1">
             <Label Content="Chess coaching" FontSize="36"/>
-            <Image Source="C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\Resources\Queen1.png"/>
+            <Image Source="/Resources/Queen1.png"/>
         </WrapPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
             <Label x:Name="TitleLabel" Content="Creators"/>

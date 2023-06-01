@@ -40,6 +40,7 @@ namespace ChessBoard
                 Label3.Content = "Email: icestorm17@mail.ru";
                 Label4.Content = "Email2: dotacourierentertainment@mail.ru";
                 Label5.Content = "KakaoTalk: Immortaaal";
+                Title = "Developers";
             }
             else if (MainViewModel.CurrentLanguage == "Russian")
             {
@@ -51,6 +52,7 @@ namespace ChessBoard
                 Label3.Content = "Email: icestorm17@mail.ru";
                 Label4.Content = "Email2: dotacourierentertainment@mail.ru";
                 Label5.Content = "KakaoTalk: Immortaaal";
+                Title = "Разработчики";
             }
             else if (MainViewModel.CurrentLanguage == "Korean")
             {
@@ -62,6 +64,7 @@ namespace ChessBoard
                 Label3.Content = "메일: icestorm17@mail.ru";
                 Label4.Content = "메일2: dotacourierentertainment@mail.ru";
                 Label5.Content = "카카오톡: Immortaaal";
+                Title = "개발자";
             }
         }
 

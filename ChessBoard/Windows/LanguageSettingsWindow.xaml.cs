@@ -95,6 +95,7 @@ namespace ChessBoard
                 RussianButton.Content = "Russian (русский)";
                 KoreanButton.Content = "Korean (한국어)";
                 NotificationTextBlock.Text = "App has got only 3 languages yet but some new ones will be probably added in the next updates. In some languages translations may be slightly different however every piece of information saves the original meaning.";
+                Title = "Language settings";
                 DisableButtonsMethod();
 
             }
@@ -104,6 +105,7 @@ namespace ChessBoard
                 RussianButton.Content = "Русский (Russian)";
                 KoreanButton.Content = "Корейский (Korean)";
                 NotificationTextBlock.Text = "На данный момент приложению доступны 3 языка, но, возможно, в следующих обновлениях буду добавлены новые. Перевод между некоторыми языками может слегка отличаться, тем не менее, вся информация сохраняет оригинальное значение.";
+                Title = "Настройки языка приложения";
                 DisableButtonsMethod();
             }
             else if (MainViewModel.CurrentLanguage == "Korean")
@@ -112,6 +114,7 @@ namespace ChessBoard
                 RussianButton.Content = "러시아어 (Russian)";
                 KoreanButton.Content = "한국어 (Korean)";
                 NotificationTextBlock.Text = "애플리케이션은 아직 3개 언어만 있지만 다음 업데이트에서 새로운 언어가 추가될 것입니다. 일부 언어에서는 번역이 약간 다를 수 있지만 모든 정보는 원래 의미를 저장합니다.";
+                Title = "애플리케이션 언어 설정";
                 DisableButtonsMethod();
             }
         }

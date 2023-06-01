@@ -43,6 +43,7 @@ namespace ChessBoard
                     "These new rules were standardized by the 16th century advent of mass production and the printing press. The faster paced game was more suitable for organized play, chess notation, codified rules, and strategy books.";
                 ForthParagraphTextBlock.Text = "American chess was fortuitously trumpeted by founding father and chess aficionado Benjamin Franklin, who in 1750 penned The Morals of Chess. Franklins article praises the social and intellectual development that chess inspires. " +
                     "Franklin himself was known to while many hours away on chess, especially against beautiful women.";
+                Title = "History of chess";
             }
             if (MainViewModel.CurrentLanguage == "Russian")
             {
@@ -61,6 +62,7 @@ namespace ChessBoard
                     "русские термины «шахматы», «слон», «ферзь» — восточного происхождения." +
                     "Несмотря на то, что церковь до середины XVII в. вела упорную борьбу по искоренению шахмат на Руси как «бесовских игрищ», они были популярны среди ремесленников, торговцев, служилых людей, бояр. Шахматами увлекались Иван Грозный, " +
                     "Борис Годунов, Алексей Михайлович и другие государственные деятели. ";
+                Title = "История шахмат";
             }
             if (MainViewModel.CurrentLanguage == "Korean")
             {
@@ -75,6 +77,7 @@ namespace ChessBoard
                     "이 새로운 규칙은 16세기 대량 생산과 인쇄기의 등장으로 표준화되었습니다. 더 빠른 속도의 게임은 조직화된 플레이, 체스 표기법, 성문화된 규칙 및 전략 서적에 더 적합했어요.";
                 ForthParagraphTextBlock.Text = "이렇게 체스는 유로파에 인기를 얻었지만 한국의 체스가 중국에서 왔습니다. 유럽 체스와 마찬가지로 중국 체스 조각은 처음에는 훨씬 약했습니다." +
                     "발견된 가장 오래된 장기 조각은 고려 말(1265년에서 1268년 사이)에 강화도로 가는 길에서 마도(대한민국) 바다에 가라앉은 오래된 난파선(소위 난파선 마도 N°3)에서 발견되었습니다. 당시 임시 자본.";
+                Title = "체스의 역사";
             }
         }
 

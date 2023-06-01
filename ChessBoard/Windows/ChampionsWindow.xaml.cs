@@ -47,6 +47,7 @@ namespace ChessBoard.Windows
                     "Classical", "Rapid", "Blitz", "Bullet"
                 };
                 TitleLabel.Content = "The best players in the world";
+                Title = "Chess champions";
             }
             else if (MainViewModel.CurrentLanguage == "Russian")
             {
@@ -59,18 +60,20 @@ namespace ChessBoard.Windows
                     "Классика", "Рапид", "Блитц", "Пуля"
                 };
                 TitleLabel.Content = "Лучшие игроки мира";
+                Title = "Лучшие шахматисты";
             }
             else if (MainViewModel.CurrentLanguage == "Korean")
             {
                 NameFilter.ItemsSource = new List<string>()
                 {
-                    "Name", "Country"
+                    "이름", "국가"
                 };
                 TypeFilter.ItemsSource = new List<string>
                 {
-                    "Classical", "Rapid", "Blitz", "Bullet"
+                    "클래식", "래피드", "블리츠", "불렛"
                 };
-                TitleLabel.Content = "The best players in the world";
+                TitleLabel.Content = "세계 최고의 선수들";
+                Title = "세계 최고의 선수들";
             }
         }
 

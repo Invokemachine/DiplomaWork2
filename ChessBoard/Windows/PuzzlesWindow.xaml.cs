@@ -28,7 +28,7 @@ namespace ChessBoard
             TranslateMethod();
             PuzzlesComboBox.ItemsSource = new List<string>()
             {
-                "1","2","3", "4", "5", "6"
+                "1","2","3", "4", "5", "6", "7"
             };
         }
 
@@ -40,6 +40,7 @@ namespace ChessBoard
                 NextButton.Content = "Next";
                 CheckButton.Content = "Check";
                 CheckButton.FontSize = 16;
+                Title = "Puzzles";
             }
             else if (MainViewModel.CurrentLanguage == "Russian")
             {
@@ -47,6 +48,7 @@ namespace ChessBoard
                 NextButton.Content = "След.";
                 CheckButton.Content = "Проверить";
                 CheckButton.FontSize = 12;
+                Title = "Задачи";
             }
             else if (MainViewModel.CurrentLanguage == "Korean")
             {
@@ -54,6 +56,7 @@ namespace ChessBoard
                 NextButton.Content = "다음";
                 CheckButton.Content = "확인";
                 CheckButton.FontSize = 16;
+                Title = "작업";
             }
         }
 
@@ -103,6 +106,12 @@ namespace ChessBoard
                     {
                         newpuzzle = 6;
                         mainViewModel.CurrentPuzzleName = "PuzzleBeginner6";
+                        break;
+                    }
+                case 6:
+                    {
+                        newpuzzle = 7;
+                        mainViewModel.CurrentPuzzleName = "PuzzleBeginner7";
                         break;
                     }
             }

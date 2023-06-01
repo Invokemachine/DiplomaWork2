@@ -88,3 +88,4 @@ C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\bin\Debug\net5.0-windows\ru
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\bin\Debug\net5.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\ChessBoard.csproj.CopyComplete
+C:\Users\AzatYTebiLove\Desktop\ChessBoard\ChessBoard\obj\Debug\net5.0-windows\ChessBoard_Content.g.cs

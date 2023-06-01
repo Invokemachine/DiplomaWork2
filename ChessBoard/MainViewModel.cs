@@ -56,57 +56,86 @@ namespace ChessBoard
             {
                 if (Board._area[0, 0].State == State.WhiteKing && Board._area[1, 2].State == State.BlackKing && Board._area[0, 3].State == State.BlackRook)
                 {
-                    MessageBox.Show("Верно!");
+                    SuccessMessageBoxes();
                 }
                 else
-                    MessageBox.Show("Неверно!");
+                    FailureMessageBoxes();
             }
             if (CurrentPuzzleName == "PuzzleBeginner2")
             {
                 if (Board._area[0, 5].State == State.WhiteKing && Board._area[1, 1].State == State.WhiteRook && Board._area[0, 7].State == State.BlackKing && Board._area[2, 6].State == State.WhiteKnight)
                 {
-                    MessageBox.Show("Верно!");
+                    SuccessMessageBoxes();
                 }
                 else
-                    MessageBox.Show("Неверно!");
+                    FailureMessageBoxes();
             }
             if (CurrentPuzzleName == "PuzzleBeginner3")
             {
                 if (Board._area[6, 1].State == State.WhiteBishop && Board._area[4, 3].State == State.BlackKing && Board._area[0, 7].State == State.BlackQueen)
                 {
-                    MessageBox.Show("Верно!");
+                    SuccessMessageBoxes();
                 }
                 else
-                    MessageBox.Show("Неверно!");
+                    FailureMessageBoxes();
             }
             if (CurrentPuzzleName == "PuzzleBeginner4")
             {
                 if (Board._area[0, 4].State == State.BlackKing && Board._area[4, 2].State == State.WhiteBishop && Board._area[1, 5].State == State.WhiteQueen && Board._area[3, 3].State == State.Empty && Board._area[2, 4].State == State.Empty && Board._area[2, 7].State != State.BlackKnight)
                 {
-                    MessageBox.Show("Верно!");
+                    SuccessMessageBoxes();
                 }
                 else
-                    MessageBox.Show("Неверно!");
+                    FailureMessageBoxes();
             }
             if (CurrentPuzzleName == "PuzzleBeginner5")
             {
                 if (Board._area[0, 7].State == State.WhitePawn && Board._area[1, 6].State == State.WhitePawn)
                 {
-                    MessageBox.Show("Верно!");
+                    SuccessMessageBoxes();
                 }
                 else
-                    MessageBox.Show("Неверно!");
+                    FailureMessageBoxes();
             }
             if (CurrentPuzzleName == "PuzzleBeginner6")
             {
-                if (Board._area[0, 7].State == State.WhitePawn && Board._area[1, 6].State == State.WhitePawn)
+                if (Board._area[7, 7].State == State.BlackRook && Board._area[6, 1].State == State.BlackRook && Board._area[7, 5].State == State.WhiteKing)
                 {
-                    MessageBox.Show("Верно!");
+                    SuccessMessageBoxes();
                 }
                 else
-                    MessageBox.Show("Неверно!");
+                    FailureMessageBoxes();
+            }
+            if (CurrentPuzzleName == "PuzzleBeginner7")
+            {
+                if (Board._area[1, 7].State == State.BlackBishop && Board._area[6, 0].State == State.BlackRook && Board._area[7, 0].State == State.WhiteKing && Board._area[4,1].State == State.BlackKnight)
+                {
+                    SuccessMessageBoxes();
+                }
+                else
+                    FailureMessageBoxes();
             }
         });
+
+        private void SuccessMessageBoxes()
+        {
+            if (CurrentLanguage == "English")
+                MessageBox.Show("Correct!", "Puzzle was solved");
+            else if (CurrentLanguage == "Russian")
+                MessageBox.Show("Верно!", "Задача решена");
+            else if (CurrentLanguage == "Korean")
+                MessageBox.Show("맞아요!", "문제를 해결했습니다");
+        }
+        private void FailureMessageBoxes()
+        {
+            if (CurrentLanguage == "English")
+                MessageBox.Show("Wrong, please try again", "Incorrect answer");
+            else if (CurrentLanguage == "Russian")
+                MessageBox.Show("Неверно, пожалуйста, попробуйте снова", "Ответ неверный");
+            else if (CurrentLanguage == "Korean")
+                MessageBox.Show("오답입니다. 다시 시도하십시오", "오답입니다.");
+        }
+
         public ICommand SelectedPuzzleShow => _selectedpuzzleshow ??= new RelayCommand(parameter =>
         {
             PuzzlesWindow puzzles = new();
@@ -229,11 +258,15 @@ namespace ChessBoard
                 CurrentPuzzleName = "PuzzleBeginner7";
                 CurrentPlayer = 2;
                 Board board = new();
-                board[6, 1] = State.BlackRook;
-                board[0, 7] = State.BlackRook;
-                board[3, 2] = State.BlackBishop;
-                board[3, 6] = State.BlackKing;
-                board[7, 5] = State.WhiteKing;
+                board[4, 1] = State.BlackKnight;
+                board[1, 7] = State.BlackBishop;
+                board[7, 0] = State.WhiteKing;
+                board[2, 0] = State.BlackRook;
+                board[1, 3] = State.BlackKing;
+                board[6, 1] = State.WhitePawn;
+                board[6, 0] = State.WhitePawn;
+                board[6, 5] = State.WhiteQueen;
+                board[3, 6] = State.WhitePawn;
                 Board = board;
                 PuzzlePlayerChanged();
             }
@@ -273,7 +306,7 @@ namespace ChessBoard
                 CurrentPlayer = 1;
                 CurrentPuzzleName = "PuzzleBeginner6";
                 PuzzlesShow();
-                CurrentPuzzleNumber = 6;
+                CurrentPuzzleNumber = 7;
             }
             else if (CurrentPuzzleNumber == 2)
             {
@@ -306,6 +339,13 @@ namespace ChessBoard
             else if (CurrentPuzzleNumber == 6)
             {
                 CurrentPuzzleName = "PuzzleBeginner6";
+                CurrentPlayer = 2;
+                PuzzlesShow();
+                CurrentPuzzleNumber--;
+            }
+            else if (CurrentPuzzleNumber == 7)
+            {
+                CurrentPuzzleName = "PuzzleBeginner7";
                 CurrentPlayer = 2;
                 PuzzlesShow();
                 CurrentPuzzleNumber--;
@@ -353,6 +393,13 @@ namespace ChessBoard
             else if (CurrentPuzzleNumber == 6)
             {
                 CurrentPuzzleName = "PuzzleBeginner6";
+                CurrentPlayer = 2;
+                PuzzlesShow();
+                CurrentPuzzleNumber++;
+            }
+            else if (CurrentPuzzleNumber == 7)
+            {
+                CurrentPuzzleName = "PuzzleBeginner7";
                 CurrentPlayer = 2;
                 PuzzlesShow();
                 CurrentPuzzleNumber = 1;

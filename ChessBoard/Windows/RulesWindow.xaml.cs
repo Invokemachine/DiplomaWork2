@@ -37,6 +37,7 @@ namespace ChessBoard
                 BeginnerTheoryButton.Content = "Beginner";
                 IntermediateTheoryButton.Content = "Intermediate";
                 AdvancedTheoryButton.Content = "Advanced";
+                Title = "Theory";
             }
             else if (MainViewModel.CurrentLanguage == "Russian")
             {
@@ -45,6 +46,7 @@ namespace ChessBoard
                 BeginnerTheoryButton.Content = "Начинающий";
                 IntermediateTheoryButton.Content = "Средний";
                 AdvancedTheoryButton.Content = "Продвинутый";
+                Title = "Теория";
             }
             else if (MainViewModel.CurrentLanguage == "Korean")
             {
@@ -53,6 +55,7 @@ namespace ChessBoard
                 BeginnerTheoryButton.Content = "초심자";
                 IntermediateTheoryButton.Content = "중간물";
                 AdvancedTheoryButton.Content = "진본한";
+                Title = "학설";
             }
         }
 

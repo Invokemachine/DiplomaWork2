@@ -43,6 +43,7 @@ namespace ChessBoard.Windows
                 TextBlock3.Text = "The second is don't forget about other pieces on the board: if the enemy's king has no escape, you won't make a stalemate until all of the other pieces are gone or unable to move.";
                 TextBlock4.Text = "The third is try to give a checks if it's possible. Sometimes you can checkmate your opponent by accident so it's better if every attacking move would be a check.";
                 TextBlock5.Text = "Sacrifice material if necessary. WInning a lot of material doesn't always mean winning the game. On the chess board might occur positions which will lead to stalemate after picking up the next opponent's piece. Try not to be greedy, follow the previous rules better: throw a checks, outzone the king and guard your own king.";
+                Title = "Theory";
             }
             else if (MainViewModel.CurrentLanguage == "Russian")
             {
@@ -52,6 +53,7 @@ namespace ChessBoard.Windows
                 TextBlock3.Text = "Во-вторых, не забывайте о других фигурах на доске: если у короля противника нет выхода, на доске не возникнет пат до тех пор, пока все другие фигуры противника не станут неспособны двигаться или не исчезнут с доски.";
                 TextBlock4.Text = "В-третьих - давайте противнику шах, если это возможно. Иногда можно матовать противника случайно, так что лучше, если каждый атакующий ход будет шахом.";
                 TextBlock5.Text = "Жертвуйте материал, если это необходимо. Выигрыш по материалу не всегда означает победу в игре. На шахматной доске могут возникнуть позиции, в которых может случиться пат, если кто-то из противников забирает последнюю фигуру оппонента. Старайтесь не быть жадными, лучше следуйте предыдущим правилам: давайте шахи, отрежьте отход королю и держите в безопасности своего короля.";
+                Title = "Теория";
             }
             else if (MainViewModel.CurrentLanguage == "Korean")
             {
@@ -61,6 +63,7 @@ namespace ChessBoard.Windows
                 TextBlock3.Text = "두 번째는 보드의 다른 조각을 잊지 마십시오. 적의 왕이 탈출할 수 없다면 다른 모든 조각이 사라지거나 움직일 수 없을 때까지 교착 상태에 빠지지 않을 것입니다.";
                 TextBlock4.Text = "세 번째는 가능하면 수표를 주려고 노력하는 것입니다. 때때로 상대를 우연히 체크메이트할 수 있으므로 모든 공격 동작이 체크가 되는 것이 좋습니다.";
                 TextBlock5.Text = "필요한 경우 재료를 희생하십시오. 많은 자료를 얻는다고 해서 항상 게임에서 이기는 것은 아닙니다. 체스판에서 다음 상대방의 말을 집은 후 교착상태에 빠지는 위치가 발생할 수 있습니다. 욕심 부리지 말고 이전 규칙을 더 잘 따르십시오. 수표를 던지고 왕을 능가하고 자신의 왕을 지키십시오.";
+                Title = "학설";
             }
         }
     }

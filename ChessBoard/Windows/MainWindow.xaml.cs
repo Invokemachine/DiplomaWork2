@@ -22,7 +22,6 @@ namespace DiplomaApp
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
@@ -40,6 +39,9 @@ namespace DiplomaApp
                 ToHistoryButton.Content = "History";
                 ToLanguageChanging.Content = "Language";
                 AboutCreatorButton.Content = "Creator";
+                ChampionsListButton.Content = "Best players";
+                ChampionsListButton.FontSize = 25;
+                Title = "Main";
             }
             else if (MainViewModel.CurrentLanguage == "Russian")
             {
@@ -49,6 +51,9 @@ namespace DiplomaApp
                 ToHistoryButton.Content = "История игры";
                 ToLanguageChanging.Content = "Выбор языка";
                 AboutCreatorButton.Content = "Об авторе";
+                ChampionsListButton.Content = "Лучшие игроки";
+                ChampionsListButton.FontSize = 22;
+                Title = "Главная";
             }
             else if (MainViewModel.CurrentLanguage == "Korean")
             {
@@ -58,6 +63,9 @@ namespace DiplomaApp
                 ToHistoryButton.Content = "체스 역사";
                 ToLanguageChanging.Content = "언어";
                 AboutCreatorButton.Content = "창조자";
+                ChampionsListButton.Content = "최고의 체스 선수";
+                ChampionsListButton.FontSize = 25;
+                Title = "본토";
             }
         }
 
