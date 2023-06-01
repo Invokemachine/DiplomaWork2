@@ -193,6 +193,9 @@
   <data name="Nepo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Players\Nepo.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="nullimage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Players\nullimage.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="pawn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BeginnersTheory\pawn.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

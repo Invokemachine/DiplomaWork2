@@ -16,7 +16,6 @@ namespace ChessBoard
 {
     public class MainViewModel : NotifyPropertyChanged
     {
-
         public static PlayWindow playWindow;
         public static Board _board = new();
         private ICommand _newGameCommand;
@@ -110,14 +109,14 @@ namespace ChessBoard
         });
         public ICommand SelectedPuzzleShow => _selectedpuzzleshow ??= new RelayCommand(parameter =>
         {
+            PuzzlesWindow puzzles = new();
+            CurrentPuzzleNumber = PuzzlesWindow.newpuzzle;
             PuzzlesShow();
         });
 
         public void PuzzlesShow()
         {
-            if (CurrentPuzzleNumber == 0)
-                CurrentPuzzleNumber = 1;
-            else if (CurrentPuzzleNumber == 1)
+            if (CurrentPuzzleNumber == 1)
             {
                 CurrentPuzzleName = "PuzzleBeginner1";
                 CurrentPlayer = 2;
@@ -203,11 +202,11 @@ namespace ChessBoard
                 Board board = new();
                 board[0, 0] = State.BlackRook;
                 board[2, 2] = State.BlackKnight;
-                board[3, 2] = State.BlackBishop;
+                board[4, 2] = State.BlackBishop;
                 board[1, 6] = State.WhitePawn;
                 board[1, 7] = State.WhitePawn;
                 board[4, 1] = State.BlackPawn;
-                board[5, 2] = State.WhiteKing;
+                board[7, 2] = State.WhiteKing;
                 board[3, 5] = State.BlackKing;
                 Board = board;
                 PuzzlePlayerChanged();
@@ -220,8 +219,21 @@ namespace ChessBoard
                 board[6, 1] = State.BlackRook;
                 board[0, 7] = State.BlackRook;
                 board[3, 2] = State.BlackBishop;
-                board[3, 6] = State.WhiteKing;
-                board[7, 5] = State.BlackKing;
+                board[3, 6] = State.BlackKing;
+                board[7, 5] = State.WhiteKing;
+                Board = board;
+                PuzzlePlayerChanged();
+            }
+            else if (CurrentPuzzleNumber == 7)
+            {
+                CurrentPuzzleName = "PuzzleBeginner7";
+                CurrentPlayer = 2;
+                Board board = new();
+                board[6, 1] = State.BlackRook;
+                board[0, 7] = State.BlackRook;
+                board[3, 2] = State.BlackBishop;
+                board[3, 6] = State.BlackKing;
+                board[7, 5] = State.WhiteKing;
                 Board = board;
                 PuzzlePlayerChanged();
             }
@@ -255,14 +267,13 @@ namespace ChessBoard
         public ICommand PuzzlePrevious => _puzzleprevious ??= new RelayCommand(parameter =>
         {
             if (CurrentPuzzleNumber == 0)
-                CurrentPuzzleNumber = 5;
+                CurrentPuzzleNumber = 6;
             else if (CurrentPuzzleNumber == 1)
             {
                 CurrentPlayer = 1;
                 CurrentPuzzleName = "PuzzleBeginner6";
                 PuzzlesShow();
                 CurrentPuzzleNumber = 6;
-                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 2)
             {
@@ -270,7 +281,6 @@ namespace ChessBoard
                 CurrentPlayer = 2;
                 PuzzlesShow();
                 CurrentPuzzleNumber--;
-                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 3)
             {
@@ -278,7 +288,6 @@ namespace ChessBoard
                 CurrentPuzzleName = "PuzzleBeginner2";
                 PuzzlesShow();
                 CurrentPuzzleNumber--;
-                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 4)
             {
@@ -286,7 +295,6 @@ namespace ChessBoard
                 CurrentPlayer = 1;
                 PuzzlesShow();
                 CurrentPuzzleNumber--;
-                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 5)
             {
@@ -294,7 +302,6 @@ namespace ChessBoard
                 CurrentPlayer = 1;
                 PuzzlesShow();
                 CurrentPuzzleNumber--;
-                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 6)
             {
@@ -302,7 +309,6 @@ namespace ChessBoard
                 CurrentPlayer = 2;
                 PuzzlesShow();
                 CurrentPuzzleNumber--;
-                PuzzlePlayerChanged();
             }
         });
         public ICommand PuzzleNext => _puzzlenext ??= new RelayCommand(parameter =>
@@ -315,7 +321,6 @@ namespace ChessBoard
                 CurrentPlayer = 2;
                 PuzzlesShow();
                 CurrentPuzzleNumber++;
-                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 2)
             {
@@ -323,7 +328,6 @@ namespace ChessBoard
                 CurrentPlayer = 1;
                 PuzzlesShow();
                 CurrentPuzzleNumber++;
-                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 3)
             {
@@ -331,7 +335,6 @@ namespace ChessBoard
                 CurrentPlayer = 1;
                 PuzzlesShow();
                 CurrentPuzzleNumber++;
-                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 4)
             {
@@ -339,7 +342,6 @@ namespace ChessBoard
                 CurrentPlayer = 1;
                 PuzzlesShow();
                 CurrentPuzzleNumber++;
-                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 5)
             {
@@ -347,15 +349,13 @@ namespace ChessBoard
                 CurrentPlayer = 1;
                 PuzzlesShow();
                 CurrentPuzzleNumber++;
-                PuzzlePlayerChanged();
             }
             else if (CurrentPuzzleNumber == 6)
             {
                 CurrentPuzzleName = "PuzzleBeginner6";
                 CurrentPlayer = 2;
                 PuzzlesShow();
-                CurrentPuzzleNumber =1;
-                PuzzlePlayerChanged();
+                CurrentPuzzleNumber = 1;
             }
         });
 

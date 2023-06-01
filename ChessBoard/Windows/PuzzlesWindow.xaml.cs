@@ -20,6 +20,7 @@ namespace ChessBoard
     /// </summary>
     public partial class PuzzlesWindow : Window
     {
+        public static int newpuzzle;
         public PuzzlesWindow()
         {
             InitializeComponent();
@@ -70,37 +71,37 @@ namespace ChessBoard
             {
                 case 0:
                     {
-                        mainViewModel.CurrentPuzzleNumber = 1;
+                        newpuzzle = 1;
                         mainViewModel.CurrentPuzzleName = "PuzzleBeginner1";
                         break;
                     }
                 case 1:
                     {
-                        mainViewModel.CurrentPuzzleNumber = 2;
+                        newpuzzle = 2;
                         mainViewModel.CurrentPuzzleName = "PuzzleBeginner2";
                         break;
                     }
                 case 2:
                     {
-                        mainViewModel.CurrentPuzzleNumber = 3;
+                        newpuzzle = 3;
                         mainViewModel.CurrentPuzzleName = "PuzzleBeginner3";
                         break;
                     }
                 case 3:
                     {
-                        mainViewModel.CurrentPuzzleNumber = 4;
+                        newpuzzle = 4;
                         mainViewModel.CurrentPuzzleName = "PuzzleBeginner4";
                         break;
                     }
                 case 4:
                     {
-                        mainViewModel.CurrentPuzzleNumber = 5;
+                        newpuzzle = 5;
                         mainViewModel.CurrentPuzzleName = "PuzzleBeginner5";
                         break;
                     }
                 case 5:
                     {
-                        mainViewModel.CurrentPuzzleNumber = 6;
+                        newpuzzle = 6;
                         mainViewModel.CurrentPuzzleName = "PuzzleBeginner6";
                         break;
                     }

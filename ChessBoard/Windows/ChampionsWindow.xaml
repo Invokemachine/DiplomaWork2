@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessBoard.Windows"
         mc:Ignorable="d"
-        Title="Champions" Height="700" Width="520">
+        Title="Champions" Height="700" Width="550">
+    <Window.Resources>
+        <BitmapImage x:Key="nullpicture" UriSource="/Resources/Players/nullimage.png"/>
+    </Window.Resources>
     <Grid Background="#EFE0E0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
@@ -26,12 +29,75 @@
             <Label x:Name="TitleLabel" Content="The best players in the world"/>
         </StackPanel>
         <WrapPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Center">
-            <TextBox x:Name="SearchTextBox" Width="150" Height="30" Margin="3"/>
-            <ComboBox x:Name="NameFilter" Width="100" Margin="3"/>
-            <ComboBox x:Name="TypeFilter" Width="100" Margin="3"/>
+            <TextBox x:Name="SearchTextBox" Width="150" Height="30" Margin="3" TextChanged="SearchTextBox_TextChanged"/>
+            <ComboBox x:Name="NameFilter" Width="100" Margin="3" SelectionChanged="NameFilter_SelectionChanged"/>
+            <ComboBox x:Name="TypeFilter" Width="100" Margin="3" SelectionChanged="TypeFilter_SelectionChanged"/>
         </WrapPanel>
-        <ScrollViewer Grid.Row="3" Grid.Column="1">
-            
+        <ScrollViewer Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid Background="Transparent">
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" x:Name="ChampionList" Grid.Row="2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Black" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="0.25*"></RowDefinition>
+                                        <RowDefinition Height="0.25*"></RowDefinition>
+                                        <RowDefinition Height="0.25*"></RowDefinition>
+                                        <RowDefinition Height="0.25*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.RowSpan="4" Grid.Column="0" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Width="220" MaxHeight="250">
+                                        <Image Source="{Binding Path=Picture, FallbackValue={StaticResource nullpicture}}" Stretch="Fill"/>
+                                    </Border>
+
+                                    <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Orientation="Horizontal">
+                                        <Border HorizontalAlignment="Center">
+                                            <TextBlock Text="{Binding Name}" FontSize="18" Margin="3" FontFamily="Courier New"/>
+                                        </Border>
+                                        <Border BorderThickness="1" HorizontalAlignment="Center">
+                                            <TextBlock Text="{Binding LastName}" FontSize="18" Margin="3" FontFamily="Courier New"/>
+                                        </Border>
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="3">
+                                        <Label  Content="Country:" FontSize="18" HorizontalAlignment="Center"/>
+                                        <Border HorizontalAlignment="Center">
+                                            <TextBlock Text="{Binding Country}" FontSize="18" FontFamily="Courier New"/>
+                                        </Border>
+                                        <Label Content="Age:" FontSize="18" HorizontalAlignment="Center"/>
+                                        <Border Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center">
+                                            <TextBlock Text="{Binding Age}" FontSize="18" FontFamily="Courier New"/>
+                                        </Border>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="3" Grid.RowSpan="4">
+                                        <Label Content = "Classical:" Grid.Row="0" Grid.Column="3" FontSize="15" Margin="3"/>
+                                        <Border Grid.Row="0" BorderBrush="Black" HorizontalAlignment="Center" Margin="3">
+                                            <TextBlock FontSize="18" Text="{Binding ClassicalChessFideElo}" FontFamily="Courier New"/>
+                                        </Border>
+                                        <Label Content ="Rapid:" Grid.Row="1" Grid.Column="3" FontSize="15" Margin="3"/> 
+                                        <Border Grid.Row="1" BorderBrush="Black" HorizontalAlignment="Center" Margin="3">
+                                            <TextBlock FontSize="18" Text="{Binding RapidChessFideElo}" FontFamily="Courier New"/>
+                                        </Border>
+                                        <Label Content ="Blitz:" Grid.Row="2" Grid.Column="3"  FontSize="15" Margin="3"/>
+                                        <Border Grid.Row="2" BorderBrush="Black" HorizontalAlignment="Center" Margin="3">
+                                            <TextBlock FontSize="18" Text="{Binding BlitzChessFideElo}" FontFamily="Courier New"/>
+                                        </Border>
+                                        <Label Content ="Bullet:" Grid.Row="3" Grid.Column="3" FontSize="15" Margin="3"/>
+                                        <Border Grid.Row="3" BorderBrush="Black" HorizontalAlignment="Center" Margin="3">
+                                            <TextBlock FontSize="18" Text="{Binding BulletChessFideElo}" FontFamily="Courier New"/>
+                                        </Border>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </ScrollViewer>
         <WrapPanel>
             <Button x:Name="BackButton" Width="40" Content='⏎' Click="BackButton_Click"/>
