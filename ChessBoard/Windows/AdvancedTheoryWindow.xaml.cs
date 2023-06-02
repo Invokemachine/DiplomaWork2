@@ -38,6 +38,7 @@ namespace ChessBoard.Windows
                 TextBlock4.Text = "If you are convinced in your opening knowledge and you see move by your opponent that you've never seen before, it most likely will be an inaccuracy or mistake.";
                 TextBlock5.Text = "To punish opponent's mistakes you need to understand what was changed in position: which piece has moved in wrong direction, which piece was blocked and what it supposed to be defending.";
                 TextBlock6.Text = "Apply more pressure on the weakest places on the opponent's side of the board immediately and don't forget about the main principles of chess.";
+                Title = "Theory";
             }
             else if (MainViewModel.CurrentLanguage == "Russian")
             {
@@ -49,6 +50,7 @@ namespace ChessBoard.Windows
                 TextBlock4.Text = "Если Вы уверены в своём знании дебютов и видите ход, который не встречали ранее, наиболее вероятно - это неточность или ошибка.";
                 TextBlock5.Text = "Чтобы наказать ошибки соперника, вам необходимо понимать, что изменилось в позиции: какие фигуры передвинулись в неправильном направлении, какие фигуры были заблокированы и что они изначально должны были защищать.";
                 TextBlock6.Text = "Оказывайте больше давления на слабейшие места в стороне противника моментально и не забывайте о главных принципах шахмат.";
+                Title = "Теория";
             }
             else if (MainViewModel.CurrentLanguage == "Korean")
             {
@@ -60,6 +62,7 @@ namespace ChessBoard.Windows
                 TextBlock4.Text = "시작 지식에 확신이 있고 이전에 본 적이 없는 상대의 움직임을 본다면 그것은 부정확하거나 실수일 가능성이 높습니다.";
                 TextBlock5.Text = "상대방의 실수를 처벌하려면 위치가 변경된 부분을 이해해야 합니다. 즉, 어떤 부분이 잘못된 방향으로 이동했는지, 어떤 부분이 막혔는지, 무엇을 방어해야 하는지를 이해해야 합니다.";
                 TextBlock6.Text = "보드의 상대방 쪽에서 즉시 가장 약한 부분에 더 많은 압력을 가하고 체스의 주요 원칙을 잊지 마십시오.";
+                Title = "학설";
             }
         }
 
