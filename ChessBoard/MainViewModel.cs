@@ -90,7 +90,7 @@ namespace ChessBoard
             }
             if (CurrentPuzzleName == "PuzzleBeginner5")
             {
-                if (Board._area[0, 7].State == State.WhitePawn && Board._area[1, 6].State == State.WhitePawn)
+                if (Board._area[0, 7].State == State.WhiteQueen && Board._area[1, 6].State == State.WhitePawn)
                 {
                     SuccessMessageBoxes();
                 }
